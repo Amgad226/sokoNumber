@@ -1,0 +1,583 @@
+
+  const canvas = document.getElementById("gameArea");
+  const ctx = canvas.getContext("2d");
+ class ball{
+  
+  constructor(x, y,color,inBox,outBox ,value,movee, sleep=1 , number_inside=null) {
+    this.x = x;
+    this.y = y;
+    this.color = color;
+    this.mainColor=color;
+    this.inBox=inBox;
+    this.outBox=outBox;
+    
+    this.value=value
+    this.movee=movee;
+    this.sleep=sleep;
+    this.number_inside=number_inside;
+             
+    this.speed = 100;
+
+    this.upPressed   = false;
+    this.downPressed = false;
+    this.leftPressed = false;
+    this.rightPressed = false;
+  }
+
+  draw() {
+    
+    ctx.beginPath();
+
+    
+
+// if(this.inBox==true){
+//   ctx.fillStyle = 'transparent';
+
+// ctx.rect(this.x, this.y, 50, 50);
+// }
+// else{
+//     ctx.fillStyle = this.color;
+//     ctx.rect(this.x, this.y, 100, 100);
+//   }
+
+  ctx.fillStyle = this.color;
+  ctx.rect(this.x, this.y, 100, 100);
+    ctx.fill();
+
+    ctx.fillStyle = 'black';
+    ctx.font = "30px Arial";
+    ctx.fillText(this.value, this.x+40, this.y+50);
+  }
+
+  cheack_move_up(array,X,Y){
+
+    if(  this==null ||  this.outBox=='wall'|| this.inBox!=true)
+      return [false,' is wall or null or outBox :'];
+    
+    if(   +X + -1 ==-1 )
+      return [false,'يلي فوقي حيط المصفوفة'];
+    
+
+    if(tt[+X+ -1][Y]!=null){
+    if(tt[+X+ -1][Y].outBox=="wall")
+      return [false,' صدم بل والل يلي فوقو :'];
+    }
+
+    if(tt[+X+ -1][Y]!=null){
+        if( tt[+X+ -1][Y].movee=='yes'||( tt[X + -1][+Y].inBox==true&&tt[X + -1][+Y].outBox==true)  )
+          return [false ,this +'انصدم بيلي فوقو '];
+    }
+    
+    if(this.sleep!=1)
+      return [false ,this + ' .sleep ==0'];
+    
+      return [true , ''] 
+
+  }
+  cheack_move_down(X,Y){
+    
+    if(  this==null ||  this.outBox=='wall'|| this.inBox!=true)
+      return [false , 'is wall or null or outBox:']
+
+    if( +X + +1 ==tt.length  )
+      return [false , ' يلي تحتي  حيط المصفوفة']
+    
+
+    if(tt[+X+ +1][Y]!=null){
+      if(tt[+X+ +1][Y].outBox=='wall')
+        return [false , ' صدم بل والل يلي تحت :']
+      }
+
+    if(tt[+X+ +1][Y]!=null){
+        if( tt[+X+ +1][Y].movee=='yes'||( tt[X + +1][+Y].inBox==true&&tt[X + +1][+Y].outBox==true) )
+          return [false ,'انصدم بيلي ع تحتو ' ] 
+    }
+    
+    if(this.sleep!=1)
+      return [false ,this+' .sleep ==0' ]
+    
+      return [true , ''] 
+  }
+  cheack_move_right(X,Y){
+    
+    if(  tt[X][Y]==null ||  tt[X][Y].outBox=='wall'|| tt[X][Y].inBox!=true)
+          return [false , 'is wall or null or outBox:']
+
+    if(   +Y + 1 ==tt[X].length  )
+          return [false , ' يلي ع يميني  حيط المصفوفة']
+
+
+    if(tt[X][+Y + +1]!=null){
+
+        if( tt[X][+Y + +1].movee=='yes'||( tt[X][+Y + +1].inBox==true&&tt[X][+Y + +1].outBox==true) )
+        return [false ,'انصدم بيلي ع يمينو ' ] 
+    }
+    
+    if(tt[X][+Y + +1]!=null){
+      if(tt[X][+Y + +1].outBox=='wall')
+         return [false , ' صدم بل والل يلي ع يمينو :']
+    }
+    
+    if(tt[X][Y].sleep!=1)
+       return [false ,this+' .sleep ==0' ]
+    
+       
+    return [true , ''] 
+    
+    
+      
+
+  }
+  move_row(X,Y,dir){
+        if(this.inBox==true &&this.outBox==true){
+                // ازا كنت عم اسحب من اوتبوكس وحط ب اوت بوكس
+                if(tt[X][+Y + dir]!=null){
+                  // alert('\n X:'+X +' Y:'+Y+' \n'+this.value+'\n outBox: ' +this.outBox +'\n inBox: ' +this.inBox +'\n color: '+this.color)
+                   if(tt[X][+Y + dir].outBox==true)
+                   {
+                    if(tt[X][+Y + dir].number_inside!=null ){
+                      console.log(`rowwwwwwwwwwwwww_row__________________rowwwwwwwwwwwwww`); 
+                      return;
+                    }
+                    tt[X][+Y + +dir].number_inside=tt[X][Y].number_inside;
+                    tt[X][+Y ].number_inside.x+=(100*dir)
+
+                    this.number_inside=null;
+                    tt[X][+Y + dir].inBox=true
+                    tt[X][+Y ].inBox=false
+                    tt[X][+Y + dir].sleep=0
+                    this.sleep=0
+                    return;
+                  }
+                }
+                 
+                  console.log(this.number_inside.color,'take out object row'+dir);
+                
+                  tt[X][+Y + dir]=this.number_inside;
+                  tt[X][+Y + dir].x+=(100*dir)
+                  // tt[X][+Y + dir].rightPressed=true
+                  this.number_inside=null;
+                  this.inBox=false;
+                  if(tt[X][+Y + dir]!=null){
+                 
+                    tt[X][+Y + dir].sleep=0
+                  }      
+                  return;
+                }//2
+
+                // out box cant have more than one inbox
+                if(tt[X][+Y + dir]!=null ){
+                    if(tt[X][+Y + dir].number_inside!=null ){
+                      //  console.log('يلي عل يمين اوت بوكس بس معبى  :'); 
+                       console.log(`on the row ${dir} is outBox but is full`); 
+                       return;
+                    }
+                }
+                
+                // console.log(this.color, ' move to right  ');
+                console.log(this.color, ` move to row ${dir}  `);
+             
+                this.x+=(100*dir)
+             
+
+
+                this.sleep=0
+
+                //entry inBox to outBox
+                if(tt[X][+Y + dir]!=null){
+
+                    if(tt[X][+Y + dir].outBox==true &&tt[X][+Y + dir].number_inside==null){
+                      tt[X][+Y + dir].number_inside=this
+                      tt[X][+Y + dir].inBox=true
+                      tt[X][+Y]=null
+                      if(tt[X][+Y + dir]!=null){
+                         tt[X][+Y + dir].sleep=0
+                      }      
+                    }
+                    return;
+                }
+                  
+                  //swap if _inBox and NULL
+                  var swap =   this ;
+                  tt[X][Y]=tt[X][+Y + dir]
+                  tt[X][+Y + dir]=swap;
+                
+
+
+
+  }
+  move_column(X,Y,dir){
+     
+    if(dir==1)
+    var direction= 'up';
+    else if(dir==-1)
+    var direction= 'down';
+    // console.log(dir);
+ 
+    if(this.inBox==true &&this.outBox==true){
+    
+      if(tt[+X + dir][Y]!=null){
+        // alert('\n X:'+X +' Y:'+Y+' \n'+this.value+'\n outBox: ' +this.outBox +'\n inBox: ' +this.inBox +'\n color: '+this.color)
+         if(tt[+X + dir][Y].outBox==true)
+         {
+          if(tt[+X + dir][Y].number_inside!=null ){
+            console.log(`-false upppppppppppppp __oppppp_UPPPPPPPPPPPPP`); 
+            return;
+            }
+          tt[X + +dir][Y].number_inside=tt[X][Y].number_inside;
+          tt[X][Y].number_inside.y+=(100*dir)
+
+          this.number_inside=null;
+          tt[+X + dir][Y].inBox=true
+          tt[X][Y].inBox=false
+          tt[+X + dir][Y].sleep=0
+          this.sleep=0
+          return;
+        }
+      }
+  
+      console.log(this.number_inside.color,`take object out outBox to ${direction}`);
+
+      // tt[X][Y].upPressed=true
+      // tt[X][Y].sleep=0
+      // console.log(tt[X][Y].number_inside.color,'تطليع الاوبجيكت عل لفوق ');
+
+
+      tt[+X + dir][Y]=this.number_inside;
+      tt[+X + dir][Y].y+=(100*dir)
+      // tt[+X+ -1][Y]=tt[X][Y].number_inside;
+      // tt[+X+ -1][Y].y-=100
+      // tt[+X+ +1][Y].upPressed=true
+
+      this.number_inside=null;
+      this.inBox=false;
+      if(tt[+X+ dir][Y]!=null){
+
+        tt[+X+ dir][Y].sleep=0;
+      }      
+      return;
+    }//2
+
+    if(tt[+X+ dir][Y]!=null ){
+      if(tt[+X+ dir][Y].number_inside!=null ){
+      console.log(`-${direction}- is outBox but is full or is inbox`); 
+      // console.log('يلي فوق اوت بوكس بس معبى  :'); 
+      return;
+      }
+    }
+
+    this.y+=(100*dir);
+    this.sleep=0;
+    // tt[X][Y].upPressed=true
+    // tt[X][Y].sleep=0
+    console.log(this.color, ` move to -${direction}-`);
+    // console.log(tt[X][Y].color, ' move ');
+
+
+    if(tt[+X+ dir][Y]!=null){
+    if(tt[+X+ dir][Y].outBox==true){
+      tt[+X+ dir][Y].number_inside=this
+      tt[+X+ dir][Y].inBox=true
+      tt[X][Y]=null
+      if(tt[+X+ dir][Y]!=null){
+        // console.log(213);
+        tt[+X+ dir][Y].sleep=0
+      }      
+    }
+    return;
+    }
+    
+      var swap =   tt[X][Y] ;
+      tt[X][Y]=tt[+X+ dir][Y]
+      tt[+X+ dir][Y]=swap;
+    
+
+  }
+  cheack_move_left(X,Y){
+
+    if(  tt[X][Y]==null ||  tt[X][Y].outBox=='wall'|| tt[X][Y].inBox!=true)
+            return [false , 'is wall or null or outBox:']
+
+    
+    if(   +Y + -1 ==-1  ) 
+            return [false , ' يلي ع يساري  حيط المصفوفة']
+
+    
+    if(tt[X][+Y + -1]!=null){
+        if( tt[X][+Y + -1].movee=='yes' ||( tt[X][+Y + -1].inBox==true&&tt[X][+Y + -1].outBox==true))
+            return [false ,'انصدم بيلي ع يسارو ' ] 
+    }
+
+ 
+
+
+    if(tt[X][+Y + -1]!=null){
+      if(tt[X][+Y + -1].outBox=='wall')
+            return [false , ' صدم بل والل يلي ع يسارو :']
+    }
+    
+    if(tt[X][Y].sleep!=1)
+    return [false ,this+' .sleep ==0' ]
+ 
+    return [true , ''] 
+
+    
+  }
+  inputs() {
+
+    if(this.inBox){
+
+        if (this.upPressed) {
+          this.y = this.y - this.speed;
+          this.upPressed=false
+        }
+
+        else if (this.downPressed) {
+          this.y = this.y + this.speed;
+          this.downPressed=false
+        }
+
+        else if (this.leftPressed) {
+          this.x = this.x - this.speed;
+          this.leftPressed=false
+
+        }
+        else if (this.rightPressed) {
+          this.x = this.x + this.speed;
+          this.rightPressed=false;
+        }
+    }
+  
+  }
+  winColor(){
+    if(this!=null)
+    {
+      this.color=this.mainColor
+      if(this.number_inside!=null)
+      {
+        if(this.value ==this.number_inside.value ){
+          // alert()
+
+          this.number_inside.color='white';
+        }
+        else{
+          this.number_inside.color=this.number_inside.mainColor;
+        }
+      }
+    }
+  }
+  
+}
+var w =false
+var s =false
+var d =false
+var a =false
+function keyDown(event, array) {
+    //up     
+    if (event.keyCode == 38||w==true) {
+    
+        for (let X =tt.length -1;  X >=0; X--) {
+          for (let Y =tt[X].length -1 ; Y >=0; Y--) {
+            
+            if(tt[X][Y]!=null){
+              tt[X][Y].winColor()
+              
+           var cheack=tt[X][Y].cheack_move_up(X,Y);
+            if(cheack[0]==false){
+              console.log(cheack[1])
+              continue;
+            }
+              tt[X][Y].move_column(X,Y,-1);
+               
+              } 
+        }
+      
+    }
+
+    for (let X = 0; X < tt.length; X++) {
+      for (let Y = 0; Y < tt[X].length; Y++) {
+
+
+          if(  tt[X][Y]==null ||  tt[X][Y].value=='W'|| tt[X][Y].inBox!=true ){
+            // console.log('ignore :');
+            continue;
+          }
+          tt[X][Y].sleep=1 
+
+        }
+      }
+
+    }
+    //down
+    if (event.keyCode == 40 ||s==true) {
+      for (let X = 0; X < tt.length; X++) {
+        for (let Y = 0; Y < tt[X].length; Y++) {
+          
+          if(tt[X][Y]!=null){
+            tt[X][Y].winColor()
+
+
+          var cheack=tt[X][Y].cheack_move_down(X,Y);
+          if(cheack[0]==false){
+            console.log(cheack[1])
+            continue;
+          }
+                         
+          tt[X][Y].move_column(X,Y,+1);
+          
+            }
+        }
+      
+    }
+
+    for (let X = 0; X < tt.length; X++) {
+      for (let Y = 0; Y < tt[X].length; Y++) {
+
+
+          if(  tt[X][Y]==null ||  tt[X][Y].value=='W'|| tt[X][Y].inBox!=true ){
+            // console.log('ignore :');
+            continue;
+          }
+          tt[X][Y].sleep=1 
+
+        }
+      }
+    }
+
+    //left
+    if (event.keyCode == 37 ||a==true) {
+        for (let X =tt.length -1;  X >=0; X--) {
+          for (let Y =tt[X].length -1 ; Y >=0; Y--) {
+          // alert(Y);
+          
+          if(tt[X][Y]!=null){
+                tt[X][Y].winColor()
+
+
+                var cheack=tt[X][Y].cheack_move_left(X,Y);
+                if(cheack[0]==false){
+                  console.log(cheack[1])
+                  continue;
+                }    
+                tt[X][Y].move_row(X,Y,-1)
+            }
+
+        }
+      
+    }
+
+    for (let X = 0; X < tt.length; X++) {
+      for (let Y = 0; Y < tt[X].length; Y++) {
+
+
+          if(  tt[X][Y]==null ||  tt[X][Y].value=='W'|| tt[X][Y].inBox!=true ){
+            // console.log('ignore :');
+            continue;
+          }
+          tt[X][Y].sleep=1 
+
+        }
+      }
+    }
+    //right
+    if (event.keyCode == 39 ||d==true) {
+   
+      for (let X = 0; X < tt.length; X++) {
+          for (let Y = 0; Y < tt[X].length; Y++) {
+            
+            
+            
+            if(tt[X][Y]!=null){
+              tt[X][Y].winColor()
+
+                var cheack=tt[X][Y].cheack_move_right(X,Y);
+                if(cheack[0]==false){
+                  console.log(cheack[1])
+                  continue;
+                }
+                       
+                tt[X][Y].move_row(X,Y,+1)
+            }
+            
+         
+
+          }
+        
+      }
+
+      for (let X = 0; X < tt.length; X++) {
+        for (let Y = 0; Y < tt[X].length; Y++) {
+
+
+            if(  tt[X][Y]==null ||  tt[X][Y].value=='W'|| tt[X][Y].inBox!=true ){
+              // console.log('ignore :');
+              continue;
+            }
+            tt[X][Y].sleep=1 
+
+          }
+        }
+      
+
+
+    }
+
+
+  var win =0
+  for (let i = 0; i < winArray.length; i++) {
+    if(winArray[i].number_inside!=null)
+    if(winArray[i].value ==winArray[i].number_inside.value )
+    win++;
+    
+  }
+  if(win==winArray.length){
+    $('#win').css('display','block')
+    console.log('dn dn dn dn dn dn we have winnerrrrrrrrrrrrr')
+  }
+  if(event.keyCode==69)
+  {
+    console.log(allSteps)
+  }
+  else{
+
+    console.log(tt);
+  }
+  get_next_state();
+
+}
+function get_next_state(){
+
+  for (let X =nextState.length -1;  X >=0; X--) {
+    for (let Y =nextState[X].length -1 ; Y >=0; Y--) {
+         
+         var cheack=nextState[X][Y].cheack_move_up(nextState,X,Y);
+            if(cheack[0]==false){
+              continue;
+            }
+         move_column(X,Y,-1)
+     }
+    }
+
+
+for (let X = 0; X < tt.length; X++) {
+  for (let Y = 0; Y < tt[X].length; Y++) {
+    
+    nextState[X][Y].cheack_move_down(X,Y)
+    move_column(X,Y,+1)
+    }
+  }
+
+for (let X =tt.length -1;  X >=0; X--) {
+   for (let Y =tt[X].length -1 ; Y >=0; Y--) {
+      nextState[X][Y].cheack_move_left(X,Y)
+      move_row(X,Y,-1)
+      }
+    }
+
+  for (let X = 0; X < tt.length; X++) {
+    for (let Y = 0; Y < tt[X].length; Y++) {       
+       nextState[X][Y].cheack_move_up(X,Y)
+       move_row(X,Y,+1)
+    }
+  }
+}

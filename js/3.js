@@ -30,21 +30,24 @@ function clearScreen() {
 
 const I1=new ball( 0,  0    ,"blue"     ,true,  false  ,1,'yes');
 const I2=new ball( 0,200    ,"red"      ,true,  false  ,2,'yes');
-const O1=new ball( 100,200  ,"#0090FF"  ,false ,true   ,1,'no');
-const O2=new ball( 100, 0   ,"#ff7000"  ,false ,true   ,2,'no');
+const O1=new ball( 100,200  ,"gray"  ,false ,true   ,1,'no');
+const O2=new ball( 100, 0   ,"gray"  ,false ,true   ,2,'no');
 
-const W1= new ball (0,100,'#222',false,  'wall','W','no')
-const W2= new ball (200,100,'#222',false,'wall','W','no')
+const W1= new ball (0,100,'#222',false,  'wall','','no')
+const W2= new ball (200,100,'#222',false,'wall','','no')
 winArray=[O1,O2];
 
 var stop=0
 // log(winnn)
+ArrayTostoreNextState=[]; //to add  nextState array 
 
 tt=[ 
   [ I1 ,  O2   , null ],
   [ W1 ,  null , W2   ],
   [ I2 ,  O1   , null ],
 ] 
+
+// alert(searchOfIndex(tt,I2))
 allSteps=[]
 allSteps.push(lodash.cloneDeep(tt))
 
@@ -56,16 +59,15 @@ function drawGame() {
   requestAnimationFrame(drawGame);
 
 
- 
-  I1.draw();
-  I1.inputs();
-
-  I2.draw();
-  I2.inputs();
-
-   
+    
   O1.draw();
   O2.draw();
+  
+  I1.draw();
+
+  I2.draw();
+
+
   W1.draw();
   W2.draw();
 

@@ -1,14 +1,17 @@
-(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+
+
+ (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 
   const lodash=require('lodash')
+// export {lodash};
+module.exports = { lodash };
+
   const canvas = document.getElementById("gameArea");
   const ctx = canvas.getContext("2d");
   //من المصفوفة بشوف ازا بيقدر يتحرق ازا اي ببعتو عل كانفاس ازا لاء ما بخليه لل اوبجيكت ياخد ترو بل رايت بريسسيد 
   // var tt  = [];
-  function log(params) {
-    console.log(params) 
-  }
-  
+
+
   document.body.addEventListener("keyup", keyDown);
   document.body.addEventListener("keyup", function(event){
     if(event.keyCode == 39 ||event.keyCode == 37||event.keyCode == 40||event.keyCode == 38){
@@ -17,40 +20,31 @@
       allSteps.push(lastStep)
     }
   });
-  
+
+
     
   function clearScreen() {
       ctx.fillStyle = "#b7aea5";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
   }
-  
-  
- 
+
+ArrayTostoreNextState=[]; //to add  nextState array 
   
   
   const I1=new ball( 0,  0    ,"blue"     ,true,  false  ,1,'yes');
-  const O1=new ball( 0,300  ,"#0090FF"  ,false ,true   ,1,'no');
-const W1= new ball (100,0,'#222',false,  'wall','W','no')
-const W2= new ball (100,100,'#222',false,  'wall','W','no')
-const W3= new ball (100,200,'#222',false,  'wall','W','no')
-const W4= new ball (100,300,'#222',false,  'wall','W','no')
-const I2=new ball( 200,  0    ,"red"     ,true,  false  ,2,'yes');
-const O2=new ball( 200,300  ,"#f97000"  ,false ,true   ,2,'no');
- 
-  winArray=[O1,O2];
-  
+  const O1=new ball( 300,0    ,"gray"  ,false ,true   ,1,'no');
+  winArray=[O1];
 
   tt=[ 
-    [ I1 ,  W1,   I2 ],
-    [ null ,W2, null ],
-    [ null ,W3, null ],
-    [ O1 ,  W4, O2 ],
-
+    [ I1 ,  null ,null  , O1 ],
   ] 
-  allSteps=[]
-  allSteps.push(lodash.cloneDeep(tt))
-  
-  
+  // var nextState=lodash.cloneDeep(tt)
+
+  // console.log(isEqualArray(tt,nextState))
+  allSteps=[] // to store all roude
+  allSteps.push(lodash.cloneDeep(tt));
+
+ 
   function drawGame() {
     
     // if(stop!=1)
@@ -59,19 +53,10 @@ const O2=new ball( 200,300  ,"#f97000"  ,false ,true   ,2,'no');
   
   
    
-    I1.draw();
-    I1.inputs();
-   
-    I2.draw();
-    I2.inputs();
-
-    W1.draw();
-    W2.draw();
-    W3.draw();
-    W4.draw();
-     
     O1.draw();
-    O2.draw();
+    I1.draw();
+   
+     
    
   
   
@@ -83,8 +68,8 @@ const O2=new ball( 200,300  ,"#f97000"  ,false ,true   ,2,'no');
   
   
   drawGame();
-  
-  },{"lodash":2}],2:[function(require,module,exports){
+
+},{"lodash":2}],2:[function(require,module,exports){
   (function (global){(function (){
   /**
    * @license
@@ -17298,4 +17283,3 @@ const O2=new ball( 200,300  ,"#f97000"  ,false ,true   ,2,'no');
   
   }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
   },{}]},{},[1]);
-  
