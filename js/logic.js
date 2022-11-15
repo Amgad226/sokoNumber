@@ -1,6 +1,4 @@
-// const {lodash}=require('../js/1.js') 
-// module.import 'lodash' from ('../js/1.js') 
-// const lodash = require('../js/1.js');
+
 function keyDown(event) {
     //up     
     if (event.keyCode == 38) {
@@ -10,33 +8,27 @@ function keyDown(event) {
             
             if(tt[X][Y]!=null){
               tt[X][Y].winColor()
-              
-          //  var cheack=tt[X][Y].cheack_move_up(tt,'tt',X,Y);
-          //   if(cheack[0]==false){
-          //     console.log(cheack[1])
-          //     continue;
-          //   }
+  
               tt[X][Y].move_column(tt,'tt',X,Y,-1);
                
-              } 
+            } 
         }
-      
     }
-
     for (let X = 0; X < tt.length; X++) {
       for (let Y = 0; Y < tt[X].length; Y++) {
 
 
           if(  tt[X][Y]==null ||  tt[X][Y].value=='W'|| tt[X][Y].inBox!=true ){
-            // console.log('ignore :');
             continue;
           }
           tt[X][Y].sleep=1 
 
         }
-      }
+    }
+   
 
     }
+
     //down
     if (event.keyCode == 40 ) {
       for (let X = 0; X < tt.length; X++) {
@@ -44,50 +36,37 @@ function keyDown(event) {
           
           if(tt[X][Y]!=null){
             tt[X][Y].winColor()
+            tt[X][Y].move_column(tt,'tt',X,Y,+1);
+            }
+        }
 
 
-          // var cheack=tt[X][Y].cheack_move_down(tt,'tt',X,Y);
-          // if(cheack[0]==false){
-          //   console.log(cheack[1])
-          //   continue;
-          // }
-                        //  alert('down')
-          tt[X][Y].move_column(tt,'tt',X,Y,+1);
-          
+      }
+        for (let X = 0; X < tt.length; X++) {
+          for (let Y = 0; Y < tt[X].length; Y++) {
+    
+    
+              if(  tt[X][Y]==null ||  tt[X][Y].value=='W'|| tt[X][Y].inBox!=true ){
+                // console.log('ignore :');
+                continue;
+              }
+              tt[X][Y].sleep=1 
+    
             }
         }
       
-    }
 
-    for (let X = 0; X < tt.length; X++) {
-      for (let Y = 0; Y < tt[X].length; Y++) {
-
-
-          if(  tt[X][Y]==null ||  tt[X][Y].value=='W'|| tt[X][Y].inBox!=true ){
-            // console.log('ignore :');
-            continue;
-          }
-          tt[X][Y].sleep=1 
-
-        }
-      }
+    
     }
 
     //left
     if (event.keyCode == 37 ) {
         for (let X =tt.length -1;  X >=0; X--) {
           for (let Y =tt[X].length -1 ; Y >=0; Y--) {
-          // alert(Y);
           
           if(tt[X][Y]!=null){
                 tt[X][Y].winColor()
-
-
-                // var cheack=tt[X][Y].cheack_move_left(tt,'tt',X,Y);
-                // if(cheack[0]==false){
-                //   console.log(cheack[1])
-                //   continue;
-                // }    
+  
                 tt[X][Y].move_row(tt,'tt',X,Y,-1)
             }
 
@@ -108,47 +87,28 @@ function keyDown(event) {
         }
       }
     }
+
     //right
     if (event.keyCode == 39 ) {
    
       for (let X = 0; X < tt.length; X++) {
           for (let Y = 0; Y < tt[X].length; Y++) {
-            
-            
-            
+
             if(tt[X][Y]!=null){
               tt[X][Y].winColor()
-
-                // var cheack=tt[X][Y].cheack_move_right(tt,'tt',X,Y);
-                // if(cheack[0]==false){
-                //   console.log(cheack[1])
-                //   continue;
-                // }
-                       
-                tt[X][Y].move_row(tt,'tt',X,Y,+1)
+              tt[X][Y].move_row(tt,'tt',X,Y,+1)
             }
-            
-         
-
           }
-        
       }
 
       for (let X = 0; X < tt.length; X++) {
         for (let Y = 0; Y < tt[X].length; Y++) {
-
-
             if(  tt[X][Y]==null ||  tt[X][Y].value=='W'|| tt[X][Y].inBox!=true ){
-              // console.log('ignore :');
               continue;
             }
             tt[X][Y].sleep=1 
-
           }
-        }
-      
-
-
+      }
     }
 
 
@@ -157,31 +117,24 @@ function keyDown(event) {
     if(winArray[i].number_inside!=null)
     if(winArray[i].value ==winArray[i].number_inside.value )
     win++;
-    
   }
   if(win==winArray.length){
     $('#win').css('display','block')
     console.log('dn dn dn dn dn dn we have winnerrrrrrrrrrrrr')
   }
-  if(event.keyCode==69)
-  {
-    console.log(allSteps)
-  }
-  else{
 
-    console.log(tt);
-  }
+  //call get_next_state
   if(event.keyCode == 39 ||event.keyCode == 37||event.keyCode == 40||event.keyCode == 38)
   {
-//   get_next_state();
-
+     get_next_state();
   }
 }
+
 
 function get_next_state(){
 
   ArrayTostoreNextState= [];
- var nextState=lodash.cloneDeep(tt)
+ var nextState=_.cloneDeep(tt)
  
 
 //up
@@ -195,10 +148,9 @@ for (let X = 0; X < nextState.length; X++) {
   }
 
   if( isEqualArray(nextState,tt) !=0 ){
-    alert()
     ArrayTostoreNextState.push(nextState)
   }
-  nextState=lodash.cloneDeep(tt)
+  nextState=_.cloneDeep(tt)
     // return;
 
 //down
@@ -213,7 +165,7 @@ for (let X = 0; X < nextState.length; X++) {
     if( isEqualArray(nextState,tt) !=0 ){
       ArrayTostoreNextState.push(nextState)
     }
-    nextState=lodash.cloneDeep(tt)
+    nextState=_.cloneDeep(tt)
 
 
 //right
@@ -228,8 +180,8 @@ for (let X = 0; X < nextState.length; X++) {
   if( isEqualArray(nextState,tt) !=0 ){
     ArrayTostoreNextState.push(nextState)
   }
-  nextState=lodash.cloneDeep(tt)
-  // nextState=lodash.cloneDeep(tt)
+  nextState=_.cloneDeep(tt)
+  // nextState=_.cloneDeep(tt)
 
 
 
@@ -245,11 +197,12 @@ for (let X =nextState.length -1;  X >=0; X--) {
    if( isEqualArray(nextState,tt) !=0 ){
      ArrayTostoreNextState.push(nextState)
     }
-    nextState=lodash.cloneDeep(tt)
+    nextState=_.cloneDeep(tt)
    
-//  nextState=lodash.cloneDeep(tt)
+//  nextState=_.cloneDeep(tt)
 
 }
+
 function isEqualArray(array1,array2){
   var a= 0;
   for (let X = 0; X < array1.length; X++) {

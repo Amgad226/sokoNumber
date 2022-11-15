@@ -14,14 +14,25 @@
     <!-- <input id="go" type="button" value="Reload Page" onClick="{console.log('winner'); document.location.reload(true)}"> -->
     <h1  id="h1">level 1</h1>
 <br>
-<h1 id = "win" style="color: green; display:none">winner</h1>
-<!-- <button onclick="{console.log(ArrayTostoreNextState)}">nextState</button> -->
+<h1 id = "win">winner</h1>
 
-    <!-- <button class="move">move</button> -->
+
 <canvas id="gameArea" width="400" height="100"></canvas>
-<script src="../js/logic.js"></script>
-<script src="../js/main.js"></script>
+
+
+<div class="continar" >
+<button class = "print" onclick="{console.log('\n','my array:','\n','\n',tt,'\n','\n','\n')}">print my array in console</button>
+<button class = "print" onclick="{console.log('\n','get Next state','\n','\n',ArrayTostoreNextState,'\n','\n','\n')}">print get next state in console</button>
+<button class = "print" onclick="{console.log('\n','all steps','\n','\n',allSteps,'\n','\n','\n')}">print all steps you moved in console</button>
+</div>
+<br><br>
+<label for="">enable log what happend when boxes move</label>
+<input type="checkbox" class="logMessage">
+
 <script src="../js/jquery.js"></script>
+<script src="../js/lodash.js"></script>
+<script src="../js/structure.js"></script>
+<script src="../js/logic.js"></script>
 <script src="../js/1.js"></script>
 </body>
 </html>

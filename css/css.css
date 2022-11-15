@@ -9,12 +9,61 @@
       rgb(7, 92, 94) 0%,
       rgb(243, 45, 253) 100%
     );
+    /* #CDC3BD */
     text-align: center;
     overflow: hidden; /*Hide scrollbars*/
+  }
+  label{
+    color:aliceblue
   }
   h1 {
     font-family: Comic Sans MS;
   }
   .home{
-    text-align: left;
+    /* text-align: left;
+    background-color: rgb(12, 53, 92);
+    color: white;
+    padding: 1em 1.5em;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: large;
+    font-weight: 800;
+    font-family: Comic Sans MS;
+  border-radius: 30px; */
+  
+
+
+    
   }
+
+  .h{
+    background-color: #4f36f4;
+    color: azure;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+.print{
+  background-color:azure ;
+  margin-top: 50px;
+  margin-left: 50px;
+  color: black;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 20px;
+  border-radius: 30px;
+  
+}
+.continar{
+  display:flex; 
+  margin-top:20px;
+   justify-content: center;
+}
+#win{
+  color: rgb(251, 251, 251);
+    display:none;
+    
+}
