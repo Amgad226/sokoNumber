@@ -9,26 +9,30 @@
 
 </head>
 <body>
-    <br>
-<a class="home" href="home.html">HOME</a>
-    <!-- <input id="go" type="button" value="Reload Page" onClick="{console.log('winner'); document.location.reload(true)}"> -->
-    <h1  id="h1">level 1</h1>
-<br>
-<h1 id = "win">winner</h1>
 
 
+    <div style="  position: absolute;left: 10px;top: 30px;">
+        <a class="home" href="home.html">HOME</a>
+        <br>
+        <br>
+        <button class="print" onclick="{DFS(ttStructure)}">DFS</button>
+        <button class="print" onclick="{BFS(ttStructure)}">BFS</button>
+        <button class="print" onclick="{UCS({element:ttStructure,priority:0})}">UCS</button>
+        <button class="print" onclick="{aStar({element:ttStructure,priority:0})}">A*</button>
+        <h3 class="print">algorithm solutions in console (F12)</h3>
+    </div>
+   
+<div style=" font-size: 30px;font-weight: bold; display:flex;  justify-content: center;flex-direction: row; ">
+    <div  id="h1">level 1</div>   
+    <div id = "win">winner</div>
+</div>
 <canvas id="gameArea" width="400" height="100"></canvas>
 
 
-<div class="continar" >
-<button class = "print" onclick="{console.log('\n','my array:','\n','\n',tt,'\n','\n','\n')}">print my array in console</button>
-<button class = "print" onclick="{console.log('\n','get Next state','\n','\n',ArrayTostoreNextState,'\n','\n','\n')}">print get next state in console</button>
-<button class = "print" onclick="{console.log('\n','all steps','\n','\n',allSteps,'\n','\n','\n')}">print all steps you moved in console</button>
-</div>
-<br><br>
-<label for="">enable log what happend when boxes move</label>
-<input type="checkbox" class="logMessage">
+    <input type="checkbox" class="logMessage"> 
 
+<script src="../js/queue.js"></script>
+<script src="../js/pQueue.js"></script>
 <script src="../js/jquery.js"></script>
 <script src="../js/lodash.js"></script>
 <script src="../js/structure.js"></script>
@@ -36,3 +40,8 @@
 <script src="../js/1.js"></script>
 </body>
 </html>
+<!-- for (let X = 0; X < copymove.length; X++) {
+    for (let Y = 0; Y < copymove[X].length; Y++) {
+      copymove[X][Y].move_column(copymove,'',X,Y,+1,true)
+    }        
+} -->
