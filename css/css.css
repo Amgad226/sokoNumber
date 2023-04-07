@@ -1,24 +1,58 @@
 #gameArea {
     border: 4px solid rgb(0, 0, 0);
   }
-#h1{
-  padding-left: 10px;
-  padding-right: 10px;
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.4);
+  .nav{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-left: -50px;
+    /* transform: translate(-50%, -50%) scaleX(1.5) scaleY(1.2); */
+  }
+  
+  #level{
+    background-color: rgba(0, 0, 0, 0.4);
     color: white;
-    /* background-color: rgba(255, 255, 255, 0.5); */
-
-    /* border: 5px solid rgb(0, 0, 0); */
-    /* color: #000; */
-    /* font-family: Comic Sans MS; */
-    border-radius: 5px;
+    width: 25%;
+    margin-left: 32%;
+    padding: 20px 0 20px 0 ;
+    border-radius: 15px;
     font-family: 'Games', sans-serif;
     font-family: 'Press Start 2P';font-size: 22px;
-
     font-size: 25px;
-    
+  }
+
+  #h1{
+    width: 90%;
+  }
+
+.link-home{
+  background-color: rgba(0, 0, 0, 0.8); 
+  border-radius: 15px;
+  color: white;
+  font-family: 'Press Start 2P';
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding: 1em 1.5em;
 }
+.home{
+  margin-top: 22px;
+  z-index: 15;
+
+  /* position: absolute; */
+  width: 10%;
+  /* position: absolute; */
+}
+.home:hover{
+  transform: scale(1.1);  
+}
+
   body {
     height: 100vh;
     background-image: url(../img/background.webp);
@@ -47,36 +81,12 @@ background-size: cover;  /* auto cover contain  100px 50px*/
   label{
     color:aliceblue
   }
-  .home-page {
-    
-    margin: 10px;
-    padding: 20px;
-    font-family: 'Games', sans-serif;
-    /* background-color: aliceblue; */
-    margin-left: 45%;
-    width: 100px;
-    background-color: rgba(255, 255, 255, 0.5);
-
-    /* border: 5px solid rgb(0, 0, 0); */
-    color: #000;
-    /* font-family: Comic Sans MS; */
-    border-radius: 5px;
-    font-size: 25px;
-    /* transition: transform 0.3s ease-in-out; */
-
-    
-  }
-  .home-page:hover{
-    transform: scale(1.1);  
-  }
+ 
   a{
     text-decoration: none;
 
   }
-  canvas{
-    
-    background: #000000;
-  }
+ 
   .next{
     text-align: left;
     background-color: rgb(16, 198, 16);
@@ -89,22 +99,7 @@ background-size: cover;  /* auto cover contain  100px 50px*/
     font-family: Comic Sans MS;
   border-radius: 30px;
   }
-  .home{
-    text-align: left;
-    background-color: rgb(12, 53, 92,.7);
-    color: white;
-    padding: 1em 1.5em;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: large;
-    font-weight: 800;
-    /* background-color: rgba(0, 0, 0, 0.8); */
-    border-radius: 15px;
-    font-family: 'Press Start 2P';font-size: 22px;
-  }
-  .home:hover{
-    transform: scale(1.1);  
-  }
+ 
   .h{
     background-color: #4f36f4;
     color: azure;
@@ -128,23 +123,38 @@ background-size: cover;  /* auto cover contain  100px 50px*/
   font-size: 20px;
   border-radius: 30px;
   font-family: 'Games', sans-serif;
-
-
+}
+#path{
+  /* font-family: "Lucida Console", "Courier New", monospace; */
+  font-family: 'Press Start 2P';
   
+  color :black; 
+   /* border: 4px solid rgb(255, 255, 255,.5); */
 }
 #algo-next{
-  z-index: 10;position: absolute;top: 250px;background-color: rgba(255, 255, 255, 0.8);color: #01a401;display:none;backdrop-filter: blur(4px);
+  z-index: 10;
+  position: absolute;
+  top: 70px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #01a401;
+  display:none;
+  backdrop-filter: blur(4px);
+  transform: scale(.8);
+
 }
 #win{
-  width: 80%;
+  
+
+  width: 100%;
+
   height: 100%;
   z-index: 10;
   position: absolute;
   /* top: 250px; */
-  
+  top: 0;
   font-size: 200px;
   /* margin-left: 50px; */
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.3);
   color: #01a401;
     display:none;
     backdrop-filter: blur(4px);
@@ -152,11 +162,13 @@ background-size: cover;  /* auto cover contain  100px 50px*/
 }
 .winner{
   background-color: rgb(255, 255, 255,.3);
-   width: 50%;
+ 
+  
+   /* width: 20%; */
    text-align: center;
-   margin-left: 25%;
-  margin-top: 15%;
-   border-radius: 20px;
+   margin-left: 0%;
+    margin-top: 0%;
+   border-radius: 0px;
    /* padding-right: 200px; */
    
 
@@ -185,27 +197,26 @@ background-size: cover;  /* auto cover contain  100px 50px*/
 }
 
 .list-algo  {
-  /* transform: rotate(90deg); */
 
   
   border-radius: 15px;
-  background-color: rgba(255, 234, 234, 0.5);
+  background-color: rgba(255, 234, 234, 0.3);
   backdrop-filter: blur(100px); 
-  margin-left:42% ;
+  margin-left:35% ;
   margin-top: 30px;
   margin-bottom: 20px;
 
-  /* left: 400px;
-  position: fixed;
-  bottom:  450px; */
-  width: 200px;
+ 
+  /* width: 200px; */
   padding: 1px;
-  /* padding-left: 50px; */
   padding-right: 30px;
 
-   /* margin: 40px 40px 50px 40px; */
    display: flex;
    flex-direction: row;
+   margin-top: 150px;
+   transform: rotate(270deg);
+   position: absolute;
+   left: -300px;
   } 
 .algo{
   cursor: pointer;
@@ -225,6 +236,8 @@ canvas {
   /* width: 100%; */
   /* height: auto; */
   transform: scale(0.9);
+  background: #000000;
+
   /* transform-origin: top left; */
 }
 .solve{
@@ -243,10 +256,145 @@ canvas {
   /* transform: rotate(270deg); */
 }
 
-.rotate{
-  margin-top: 150px;
-  transform: rotate(270deg);
-  position: absolute;
-  left: -300px;
+
+
+@media screen and (max-width: 798px) {
+.big-canvas-5{
+
+  transform: translate(-50%, -50%) scale(0.57);
 }
 
+.big-canvas-4{
+
+  transform: translate(-50%, -50%) scale(0.63);
+}
+
+
+  .list-algo {
+  /* transform: scale(0.7); */
+
+    width: 350px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    padding: 10px;
+    background-color: #f1f1f1;
+    font-size: 10px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 70px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    transform: rotate(0deg) scale(0.8);
+
+    /* transform: translateY(100%); */
+    /* transition: transform 0.5s ease-in-out; */
+  }
+  canvas{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    /* transform: scale(0.5); */
+
+    }
+    #path{
+      position: absolute;
+      top: 95%;
+  font-family: 'Press Start 2P';
+
+      /* right: 65%; */
+      /* transform: translate(-50%, -50%) rotate(90deg); */
+    }
+    #level{
+/* margin-right: 50px; */
+      background-color: rgba(0, 0, 0, 0.4);
+      color: white;
+      width: 200px;
+      /* margin-left: 32%; */
+      /* padding: 20px 0 20px 0 ; */
+      border-radius: 15px;
+      font-family: 'Games', sans-serif;
+      font-family: 'Press Start 2P';font-size: 22px;
+      font-size: 25px;
+    }
+    #h1{
+margin-top: 50px;
+      
+      width: 60%;
+  transform: scale(0.6);
+
+    }
+  
+  .link-home{
+
+    background-color: rgba(100, 49, 49, 0.8); 
+    border-radius: 15px;
+    color: white;
+    font-family: 'Press Start 2P';
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    /* padding: 1em 1.5em; */
+  }
+  .home{
+    /* margin-top: 22px; */
+    transform: scale(0.7);
+
+  }
+ 
+  .nav{
+    display:flex;
+    /* background-color: #4f36f4; */
+  }
+
+
+  #win{
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    position: absolute;
+    /* top: 250px; */
+    /* margin-left: 10%; */
+    font-size: 120px;
+    /* margin-left: 50px; */
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(4px);
+    color: #01a401;
+      /* display:none; */
+    text-align: center;
+
+      
+  }
+  .winner{
+    /* text-align: center; */
+    /* background-color: rgb(255, 255, 255); */
+     /* width: 0px; */
+     margin-left: 0%;
+     margin-top: 50%;
+    border-radius: 70px;
+    
+     /* padding-right: 200px; */
+     background-color: rgba(255, 255, 255, .3);
+     /* backdrop-filter: blur(4px); */
+  
+  }
+  .next{
+    text-align: left;
+    background-color: rgb(16, 198, 16);
+    color: white;
+    padding: 1em 1.5em;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: large;
+    font-weight: 800;
+    font-family: Comic Sans MS;
+  border-radius: 30px;
+  }
+  .levels{
+    margin-right: 90px;
+  }
+}

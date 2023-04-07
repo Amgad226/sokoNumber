@@ -9,34 +9,40 @@
     <link href='../css/font.css' rel='stylesheet'>
 </head>
 <body>
-   
     <div id="loader"></div>
     
-    <div style=" font-size: 30px;font-weight: bold; display:flex;  justify-content: center;flex-direction: row; ">
-        <div class="" id="h1">LEVEL 2</div>   
-        <div id = "win">
-            <div class="winner" >winner</div>
-            <a href="../html/3.html" class="next">next</a>
-        </div>
-        <a  id="algo-next" href="../html/3.html" class="next">next</a>
-    </div>
+    <div class="nav">
+       <div class="home">
+         <a class="link-home" href="home.html">HOME</a>
+       </div>
 
-    <a class="home" style="  position: absolute;left: 10px;top: 30px;" href="home.html">HOME</a>
-  
-    <div class="list-algo rotate"  >
-        <div class="solve" >  Solve With Algorithms</div>
-            <button class="print algo" onclick="{setTimeout(() => {    DFS(ttStructure)    }, 100);displayLoader();}">DFS</button>
-            <button class="print algo" onclick="{setTimeout(() => {   BFS(ttStructure)     }, 100);displayLoader();}">BFS</button>
-            <button class="print algo" onclick="{setTimeout(() => {   UCS  ({element:ttStructure,priority:0})     }, 100);displayLoader();}">UCS</button>
-            <button class="print algo" onclick="{setTimeout(() => {   aStar({element:ttStructure,priority:0})   }, 100);displayLoader();}">A*</button>
-        </div>
-    </div>
+       <div class="" id="h1">
+         <div id="level">LEVEL 2</div>
+       </div>   
+   </div>
+
+     <div id = "win">
+         <div class="winner" >winner</div>
+           <a href="../html/3.html" class="next">next</a>
+       </div>
+
+         <a  id="algo-next" href="../html/3.html" class="  next ">next</a>
+     </div>
+
+
+     <div class="list-algo rotate"  >
+         <div class="solve" >  Solve With Algorithms</div>
+             <button class="print algo" onclick="{setTimeout(() => {    DFS(ttStructure)    }, 100);displayLoader();}">DFS</button>
+             <button class="print algo" onclick="{setTimeout(() => {   BFS(ttStructure)     }, 100);displayLoader();}">BFS</button>
+             <button class="print algo" onclick="{setTimeout(() => {   UCS  ({element:ttStructure,priority:0})     }, 100);displayLoader();}">UCS</button>
+             <button class="print algo" onclick="{setTimeout(() => {   aStar({element:ttStructure,priority:0})   }, 100);displayLoader();}">A*</button>
+         </div>
+     </div>
+
     <canvas id="gameArea" width="300" height="400"></canvas>
 
+    <div id="path"> </div>
 
-    <div>
-        <div style='  font-family: "Lucida Console", "Courier New", monospace;color :black;  border: 4px solid rgb(255, 255, 255,.5);' id="path"> </div>
-    </div>
 
 
 <input type="checkbox" class="logMessage"> 
@@ -50,6 +56,7 @@
     <script src="../js/levels/2.js"></script>
     <script src="../js/draw/callDraw.js"></script>
     <script src="../js/draw/algoDrow.js"></script>
+    <script src="../js/controlle.js"></script>
 
 </body>
 </html>
