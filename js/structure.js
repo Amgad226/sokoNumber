@@ -26,7 +26,7 @@ function clearScreen() {
 }
 
 const image = new Image(); 
-image.src = "../img/wall.png";
+image.src = "../img/wall.jpg";
 
 const outB = new Image(); 
 outB.src = "../img/in1.jpg";

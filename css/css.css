@@ -55,7 +55,7 @@
 
   body {
     height: 100vh;
-    background-image: url(../img/background.webp);
+    background-image: url(../img/background.jpg);
     background-color: rgb(90, 165, 165);
 background-repeat:no-repeat ;
 background-attachment: fixed;
