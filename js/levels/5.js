@@ -26,7 +26,8 @@
     const O4=new outt( 400,300   ,fourColor   ,false ,true   ,4,'no');
     // const O1=new ball( 100,200  ,"#0090FF"  ,false ,true   ,1,'no');
 
-
+const inputs =[ I1, I2, I3 ,I4 ,]
+const outputs =[ O1, O2, O3 ,O4 ,]
     
     const w1= new Wall (0  ,0,'#222',false,    'wall', '','no')
     const w2= new Wall (100 ,0,'#222',false,  'wall', '','no')
@@ -54,6 +55,7 @@
     const w25= new Wall(400,100,'#222',false,'wall', '','no')
     const w26= new Wall(300,200,'#222',false,'wall', '','no')
 
+    var walls  = [ w1, w2, w3, w4, w5, w6, w7, w8, w9, w10, w11, w13, w14, w15, w16, w17, w19, w20, w21, w22, w23, w24, w25, w26];
     winArray=[O1,O2,O3,O4];
     
     var stop=0
@@ -117,15 +119,19 @@ get_next_state(ttStructure)
       
       clearScreen();
       requestAnimationFrame(drawGame);
-      
+      drowTT();
       O4.draw();
       O3.draw();
       O2.draw();
       O1.draw();
+ 
+
       I1.draw();
       I2.draw();
       I3.draw();
       I4.draw();
+      
+   
       w1.draw();
       w2.draw();
       w3.draw();
@@ -146,12 +152,11 @@ get_next_state(ttStructure)
       w20.draw();
       w21.draw();
       w22.draw();
-
       w23.draw();
       w24.draw();
       w25.draw();
       w26.draw();
-      // w24.draw();
+      w24.draw();
      
     
         
@@ -161,7 +166,7 @@ get_next_state(ttStructure)
     
     
     
-    drawGame();
+    // drawGame();
     // const w1= new ball (0,0,'#222',false,    'wall', 'W1 ','no')
     // const w2= new ball (100,0,'#222',false,  'wall', 'W2 ','no')
     // const w3= new ball (200,0,'#222',false,  'wall', 'W3 ','no')

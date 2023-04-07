@@ -42,8 +42,13 @@
  
     ] ;
     ttStructure=new structure(tt ,null)
+    var inputs  = [I1,I2,I3] ; 
+    var outputs  = [O1,O2,O3] ; 
+    var walls = [
+      w1,w2,w3,w4,w5
+      ,W1,W2,W3,W4,W5,W6
 
-    
+    ];
     
 
     // const I1w=new ball( 0,  0+100    ,oneColor    ,true   ,false  ,1  ,'yes'  ,0   ,null);

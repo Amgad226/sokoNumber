@@ -26,6 +26,15 @@ const W2= new Wall (200,100+100,'#222',false,'wall','','no')
 const w4= new Wall (0   ,400,'#222',false,  'wall', '','no')
 const w5= new Wall (100 ,400,'#222',false,  'wall', '','no')
 const w6= new Wall (200 ,400,'#222',false,  'wall', '','no')
+
+walls=[
+  w1,w2,w3,w4,w5,w6
+  ,W1,W2
+];
+
+var inputs  = [I1,I2] ; 
+var outputs  = [O1,O2] ; 
+
 var winArray=[O1,O2];
 
 var stop=0
@@ -39,13 +48,6 @@ tt=[
   // [ w4    ,w5   ,w6   ],
 ];
 
-
-
-
-function dist(){
-
-
-}
 
 var ttStructure=new structure(tt ,null)
 
@@ -74,47 +76,9 @@ var hashedTTWin=hashArray(ttWin)
 var array1 = [I1,I2];
 var array2 = [I1w,I2w] 
 
-function test(){
-
-  return(isEqualArray(tt,ttWin));
-}
 
 allSteps=[]
 allSteps.push(_.cloneDeep(tt))
 get_next_state(ttStructure)
 
-
-
-function drawGame() {
-  
-  clearScreen();
-  requestAnimationFrame(drawGame);
-
-  // drowTT()
-
-    
-  O1.draw();
-  O2.draw();
-  
-  
-  I1.draw();
-  I2.draw();
-
-
-  W1.draw();
-  W2.draw();
-
-  w1.draw();
-  w2.draw();
-  w3.draw();
-
-    
-  w4.draw();
-  w5.draw();
-  w6.draw();
-
-
-}    
-
-drawGame();
 

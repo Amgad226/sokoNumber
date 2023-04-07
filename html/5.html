@@ -5,40 +5,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>level 5</title>
+    <link href='../css/font.css' rel='stylesheet'>
     <link rel="stylesheet" href="../css/css.css">
-
 </head>
 <body>
-
-    <div style="  position: absolute;left: 10px;top: 30px;">
-        <a class="home" href="home.html">HOME</a>
-        <br>
-        <br>
-        <button class="print" onclick="{DFS(ttStructure)}">DFS</button>
-        <button class="print" onclick="{BFS(ttStructure)}">BFS</button>
-        <button class="print" onclick="{UCS({element:ttStructure,priority:0})}">UCS</button>
-        <button class="print" onclick="{aStar({element:ttStructure,priority:0})}">A*</button>
-        <h3 class="print">algorithm solutions in console (F12)</h3>
+    
+    <div id="loader"></div>
+    
+    <div style=" font-size: 30px;font-weight: bold; display:flex;  justify-content: center;flex-direction: row; ">
+        <div class="" id="h1">LEVEL 5</div>   
+        <div id = "win">
+            <div class="winner" >winner</div>
+            <a href="../html/6.html" class="next">next</a>
+          </div>
+        <a  id="algo-next" href="../html/6.html" class="next">next</a>
     </div>
-   
-<div style=" font-size: 30px;font-weight: bold; display:flex;  justify-content: center;flex-direction: row; ">
-    <div  id="h1">level 5</div>   
-    <div id = "win">winner</div>
-</div>
-<canvas id="gameArea" width="600" height="600"></canvas>
+
+    <a class="home" style="  position: absolute;left: 10px;top: 30px;" href="home.html">HOME</a>
+  
+    <div class="list-algo rotate"  >
+        <div class="solve" >  Solve With Algorithms</div>
+            <button class="print algo" onclick="{setTimeout(() => {    DFS(ttStructure)    }, 100);displayLoader();}">DFS</button>
+            <button class="print algo" onclick="{setTimeout(() => {   BFS(ttStructure)     }, 100);displayLoader();}">BFS</button>
+            <button class="print algo" onclick="{setTimeout(() => {   UCS  ({element:ttStructure,priority:0})     }, 100);displayLoader();}">UCS</button>
+            <button class="print algo" onclick="{setTimeout(() => {   aStar({element:ttStructure,priority:0})   }, 100);displayLoader();}">A*</button>
+        </div>
+    </div>
+    <canvas id="gameArea" width="600" height="600"></canvas>
 
 
-    <input type="checkbox" class="logMessage"> 
+    <div>
+        <div style='  font-family: "Lucida Console", "Courier New", monospace;color :black;  border: 4px solid rgb(255, 255, 255,.5);' id="path"> </div>
+    </div>
+
+
+<input type="checkbox" class="logMessage"> 
 
   
-<script src="../js/pQueue.js"></script>
-    
-<script src="../js/queue.js"></script>
-<script src="../js/jquery.js"></script>
-<script src="../js/lodash.js"></script>
-<script src="../js/structure.js"></script>
-<script src="../js/logic.js"></script>
-<script src="../js/5.js"></script>
+    <script src="../js/lib/queue.js"></script>
+    <script src="../js/lib/pQueue.js"></script>
+    <script src="../js/lib/jquery.js"></script>
+    <script src="../js/lib/lodash.js"></script>
+    <script src="../js/structure.js"></script>
+    <script src="../js/logic.js"></script>
+    <script src="../js/levels/5.js"></script>
+    <script src="../js/draw/callDraw.js"></script>
+    <script src="../js/draw/algoDrow.js"></script>
+
 
 
 

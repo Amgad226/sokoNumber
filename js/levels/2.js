@@ -21,7 +21,9 @@ const W3= new Wall (100,200,'#222',false,  'wall','','no')
 const W4= new Wall (100,300,'#222',false,  'wall','','no')
 
 
- 
+var inputs  = [I1,I2] ; 
+var outputs  = [O1,O2] ; 
+var walls=[W1,W2,W3,W4];
   winArray=[O1,O2];
   
   ArrayTostoreNextState=[]; //to add  nextState array 
@@ -31,8 +33,8 @@ const W4= new Wall (100,300,'#222',false,  'wall','','no')
     [ null ,W2, null ],
     [ null ,W3, null ],
     [ O1 ,  W4, O2 ],
-
   ] 
+  
   ttStructure=new structure(tt ,null)
 
   
@@ -70,28 +72,5 @@ pathArrayDfs.push(tt)
   // get_next_state(tt)
 
 
-  function drawGame() {
-    
-    clearScreen();
-    requestAnimationFrame(drawGame);
-    drowTT()
-  
-    // O1.draw();
-    // O2.draw();
-   
-    // I1.draw();
-    // I2.draw();
-    
-
-    // W1.draw();
-    // W2.draw();
-    // W3.draw();
-    // W4.draw();
-
  
-  }    
-  
-  
-  
-  drawGame();
   

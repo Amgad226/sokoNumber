@@ -433,10 +433,21 @@ var stackWin = []
 var stack = [];
 var counter = 0;
 var visited = [];
+var path
+function hideLoader(){
+  var loader = document.getElementById("loader");
+  loader.style.display = "none";
+}
+function displayLoader(){
+  var loader = document.getElementById("loader");
+  loader.style.display = "block";
+  
+}
 
 function DFS(Structurearray = ttStructure, dir = '') {
-  // console.log('-DFS-');
-  // if(counter==10)return;
+
+
+
   var StructureCopy = _.cloneDeep(Structurearray);
   // console.log(Struct ureCopy.array);
   // StructureCopy.perant = perants
@@ -448,38 +459,31 @@ function DFS(Structurearray = ttStructure, dir = '') {
   }
   else {
     for (let i = 0; i < stack.length; i++) {
-      // console.log(StructureCopy);
-      // console.log(stack[i].array);
       if (isEqualArray(StructureCopy.array, stack[i].array) == 0) {
-        // stack.slice(StructureCopy,1)
-        // stack.splice(i,1)
-        // console.log('موجود');
         return false;
       }
     }
-    //  stackWin.push(array);
-    // console.log('+++++++++',dir,'+++++++++');
+
     counter++;
-    // StructureCopy.parant=
     stack.push(StructureCopy);
     visited.push(StructureCopy);
-
   }
 
-  // if(counter==4)
-  // console.log(StructureCopy,ttWin);
+
   if (isEqualArray(StructureCopy.array, ttWin) == 0) {
+    hideLoader()
     for (let i = 0; i < stack.length; i++) {
       stackWin.push(stack[i])
     }
-    var path = [tt, ...StructureCopy.perant]
+     path = [tt, ...StructureCopy.perant,ttWin]
 
     console.log(path, 'path is');
     console.log(path.length, 'path');
     console.log(stackWin.length, 'visitied');
     console.log('win');
+    document.getElementById('path').innerHTML=`path length is ${path.length} `
 
-
+    drawGamee(path);
 
     return true
   }
@@ -523,17 +527,6 @@ function BFS(structureArrayy) {
   var isVi = 0
   var structureArray = _.cloneDeep(structureArrayy);
 
-  // for (let j = 0; j < visited.length; j++) {
-  //   if (isEqualArray(structureArray.array, visited[j]) == 0) {
-  //     isVi++;
-  //     break;
-  //   }
-  // }
-  // if (isVi == 0) {
-  //   //  console.log('-BFS-');
-
-  //   bfsCounter++;
-  // }
   var hashedArray ;hashedArray = hashArray(structureArray.array);
   for (let i = 0; i < visited.length; i++) {
     if (hashedArray==visited[i]) {
@@ -548,8 +541,8 @@ function BFS(structureArrayy) {
   visited.push(structureArray.array)
 
   if (isEqualArray(structureArray.array, ttWin) == 0) {
-
-    var path = [...structureArray.perant, structureArray.array]
+    hideLoader()
+    var path = [...structureArray.perant, structureArray.array,ttWin]
     // console.log(path,'path is');
     console.log(path, 'path is');
     console.log(path.length, 'path');
@@ -557,6 +550,10 @@ function BFS(structureArrayy) {
 
     // alert('winner ')
     console.log('win');
+    document.getElementById('path').innerHTML=`path length is ${path.length} `
+
+    drawGamee(path);
+
     return true
   }
   // visited.push(structureArray.array)
@@ -637,6 +634,7 @@ function UCS(structureArrayy) {
 
   // if (isEqualArray(structureArray.element.array, ttWin) == 0) {
     if (hashedTTWin==hashedArray) {
+      hideLoader()
     var path = [...structureArray.element.perant, structureArray.element.array,]
     console.log(path, 'path is');
     console.log(path.length, 'path');
@@ -644,6 +642,10 @@ function UCS(structureArrayy) {
     console.log(visited, 'visitied node ');
     console.log(structureArray.element.cost, 'cost');
     console.log('win');
+    document.getElementById('path').innerHTML=`path length is ${path.length} `
+
+    drawGamee(path);
+
     return true
   }
 
@@ -683,6 +685,7 @@ function aStar(structureArrayy) {
 
 
   if (isEqualArray(structureArray.element.array, ttWin) == 0) {
+    hideLoader()
     visited.push(structureArray.element.array)
     var path = [...structureArray.element.perant, structureArray.element.array,]
     console.log('path is ',path );
@@ -692,7 +695,11 @@ function aStar(structureArrayy) {
     console.log(copyVisited.length, 'visitied');
     console.log(structureArray.element.cost, 'cost');
     console.log('--------------------------------------------------');
-    // return true
+    document.getElementById('path').innerHTML=`path length is ${path.length} `
+    
+    drawGamee(path);
+
+    return true
     visited.pop()
   }
  
@@ -753,6 +760,7 @@ function aStar(structureArrayy) {
     console.log(visited.length, 'visitied');
     console.log(structureArray.element.cost, 'cost');
     console.log('win');
+
     return true
   }
   

@@ -6,42 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>level 1</title>
     <link rel="stylesheet" href="../css/css.css">
+    <link href='../css/font.css' rel='stylesheet'>
 
 </head>
 <body>
-
-
-    <div style="  position: absolute;left: 10px;top: 30px;">
-        <a class="home" href="home.html">HOME</a>
-        <br>
-        <br>
-        <button class="print" onclick="{DFS(ttStructure)}">DFS</button>
-        <button class="print" onclick="{BFS(ttStructure)}">BFS</button>
-        <button class="print" onclick="{UCS({element:ttStructure,priority:0})}">UCS</button>
-        <button class="print" onclick="{aStar({element:ttStructure,priority:0})}">A*</button>
-        <h3 class="print">algorithm solutions in console (F12)</h3>
+    <div id="loader"></div>
+    
+    <div style=" font-size: 30px;font-weight: bold; display:flex;  justify-content: center;flex-direction: row; ">
+        <div class="" id="h1">LEVEL 1</div>   
+        <div id = "win">
+            <div class="winner" >winner</div>
+            <a  href="../html/2.html" class="next">next</a>
+        </div>
+        <a  id="algo-next" href="../html/2.html" class="next">next</a>
     </div>
-   
-<div style=" font-size: 30px;font-weight: bold; display:flex;  justify-content: center;flex-direction: row; ">
-    <div  id="h1">level 1</div>   
-    <div id = "win">winner</div>
+
+    <a class="home" style="  position: absolute;left: 10px;top: 30px;" href="home.html">HOME</a>
+  
+    <div class="list-algo rotate"  >
+        <div class="solve" >  Solve With Algorithms</div>
+            <button class="print algo" onclick="{setTimeout(() => {    DFS(ttStructure)    }, 100);displayLoader();}">DFS</button>
+            <button class="print algo" onclick="{setTimeout(() => {   BFS(ttStructure)     }, 100);displayLoader();}">BFS</button>
+            <button class="print algo" onclick="{setTimeout(() => {   UCS  ({element:ttStructure,priority:0})     }, 100);displayLoader();}">UCS</button>
+            <button class="print algo" onclick="{setTimeout(() => {   aStar({element:ttStructure,priority:0})   }, 100);displayLoader();}">A*</button>
+        </div>
+    </div>
+
+    <canvas id="gameArea" width="400" height="100"></canvas>
+ 
+<div>
+    <div style='  font-family: "Lucida Console", "Courier New", monospace;color :black;  border: 4px solid rgb(255, 255, 255,.5);' id="path"> </div>
 </div>
-<canvas id="gameArea" width="400" height="100"></canvas>
 
-
-    <input type="checkbox" class="logMessage"> 
-
-<script src="../js/queue.js"></script>
-<script src="../js/pQueue.js"></script>
-<script src="../js/jquery.js"></script>
-<script src="../js/lodash.js"></script>
+<script src="../js/lib/queue.js"></script>
+<script src="../js/lib/pQueue.js"></script>
+<script src="../js/lib/jquery.js"></script>
+<script src="../js/lib/lodash.js"></script>
 <script src="../js/structure.js"></script>
 <script src="../js/logic.js"></script>
-<script src="../js/1.js"></script>
+<script src="../js/levels/1.js"></script>
+<script src="../js/draw/callDraw.js"></script>
+<script src="../js/draw/algoDrow.js"></script>
+
 </body>
 </html>
-<!-- for (let X = 0; X < copymove.length; X++) {
-    for (let Y = 0; Y < copymove[X].length; Y++) {
-      copymove[X][Y].move_column(copymove,'',X,Y,+1,true)
-    }        
-} -->
