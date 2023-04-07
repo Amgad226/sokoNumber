@@ -54,9 +54,13 @@
 }
 
   body {
+      background: linear-gradient(
+      0deg,
+      rgb(90, 129, 165) 0%,
+      rgb(45, 132, 253) 120%
+    );
     height: 100vh;
     background-image: url(../img/background.jpg);
-    background-color: rgb(90, 165, 165);
 background-repeat:no-repeat ;
 background-attachment: fixed;
 background-position: left top ;
@@ -66,11 +70,7 @@ background-size: 300px 300px;
 
 
 background-size: cover;  /* auto cover contain  100px 50px*/
-    /* background: linear-gradient(
-      0deg,
-      rgb(7, 92, 94) 0%,
-      rgb(243, 45, 253) 120%
-    ); */
+  
 
     /* background: #bebdcd; */
 
