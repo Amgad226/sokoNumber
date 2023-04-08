@@ -3,6 +3,7 @@ var twoColor=  'purple'
 var threeColor='#fe2d81'
 var fourColor= 'black'
 var fiveColor= 'brown'
+// alert()
 
 const canvas = document.getElementById("gameArea");
 const ctx = canvas.getContext("2d");
@@ -16,6 +17,14 @@ outB.src = "../img/in1.jpg";
 
 const inB = new Image(); 
 inB.src = "../img/out1.jpg";
+
+
+var boolean= true ; 
+function clearScreen() {
+  ctx.fillStyle = "#b7aea5";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fill();
+}
 
 function winColor(element){
   if(element!=null)

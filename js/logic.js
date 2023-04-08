@@ -131,7 +131,8 @@ function userplay(event) {
   }
     if (checkWin()) {
 
-    $('#win').css('display', 'block')
+    document.querySelector('#win').style.display = 'block';
+
     console.log('dn dn dn dn dn dn we have winnerrrrrrrrrrrrr')
     endGame = true
   }

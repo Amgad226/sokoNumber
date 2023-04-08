@@ -7,7 +7,7 @@
     <link href='../css/font.css' rel='stylesheet'>
     <link rel="shortcut icon" href='../img/logo-1.jpg' type="image/x-icon">
     <link rel="apple-touch-icon" href='../img/logo-1.jpg'>
-<link rel="stylesheet" href="../css/css.css">
+<!-- <link rel="stylesheet" href="../css/css.css"> -->
   </head>
   <body>
  
@@ -50,21 +50,30 @@
 
       </div>
         
- 
 
 
+      <script src="../js/script-loader.js"></script>
+      <script>
+        loadCSS() 
+            loadScripts();
 
-  <script src="../js/lib/queue.js"></script>
-  <script src="../js/lib/pQueue.js"></script>
-  <script src="../js/lib/jquery.js"></script>
-  <script src="../js/lib/lodash.js"></script>
-  <script src="../js/structure.js"></script>
-  <script src="../js/logic.js"></script>
-  <script src="../js/levels/3.js"></script>
-  <script src="../js/draw/callDraw.js"></script>
-  <script src="../js/draw/algoDrow.js"></script>
-  <script src="../js/controlle.js"></script>
-
-   
+      </script>
+  
   </body>
-</html>
+  <script>
+  
+          setTimeout(() => {
+          
+          var scripts = [
+            '../js/levels/3.js',
+          ];
+          
+          for (var i = 0; i < scripts.length; i++) {
+              var scriptEl = document.createElement('script');
+              scriptEl.src = scripts[i];
+              document.head   .appendChild(scriptEl);
+              }
+      },50)
+  </script>
+  </html>
+  

@@ -5,54 +5,81 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <!-- <link rel="stylesheet" href="../css/css.css"> -->
-    <link rel="stylesheet" href="css/gameFont.css">
+    <!-- <link rel="stylesheet" href="css/gameFont.css"> -->
     <link rel="shortcut icon" href='img/logo-1.jpg' type="image/x-icon">
-    <link rel="apple-touch-icon" href='img/logo-1.jpg'>
 
 </head>
 <style>
+a{
+    text-decoration: none;
+    
 
+}
 @media screen and (max-width: 798px) {
-    .levels{
-    margin-right: 90px;
+    .levels-list{
+        position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-80%, -40%);
+  text-align: center;
   }
+  
 }
 
 .home-page {
-    
     margin: 10px;
     padding: 20px;
-    font-family: 'Games', sans-serif;
-    /* background-color: aliceblue; */
-    margin-left: 45%;
-    width: 100px;
-    background-color: rgba(255, 255, 255, 0.5);
+    /* font-family: 'Games', Arial,sans-serif; */
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
 
-    /* border: 5px solid rgb(0, 0, 0); */
-    color: #000;
-    /* font-family: Comic Sans MS; */
+    width: 100px;
+    background-color: rgba(29, 49, 200, 0.5);
+font-weight:bold;
+
+    /* color: #000; */
     border-radius: 5px;
-    font-size: 25px;
-    /* transition: transform 0.3s ease-in-out; */
+    font-size: 20px;
+    color: white;
+    margin-left: 45%;
+
 
     
+  }
+  a{
+font-weight:bold;
+color: white;
+
+
+
   }
   .home-page:hover{
     transform: scale(1.1);  
   }
-</style>
-<body style="
+  body{
     background-image: url(img/background.jpg);
     background-repeat:no-repeat ;
     background-attachment: fixed;
     background-position: left top ;
     background-size: cover; 
-    background-position: 50% 50% ; ">
+    background-position: 50% 50% ;
+  }
+  h1{
+    font-size: 50px;
+     /* font-family: 'Games', sans-serif; */
+     margin-top: 60px;text-align: center;
+     font-family:Verdana, Geneva, Tahoma, sans-serif
+  }
+  .levels-list{
+    
+    display: flex;flex-direction: column
+  }
+</style>
 
-    <h1 style="font-size: 50px; font-family: 'Games', sans-serif; margin-top: 60px;text-align: center;" >Soko Number</h1>
+<body>
 
-    <div style="display: flex;flex-direction: column; "class="levels">
+    <h1 >Soko Number</h1>
+
+    <div class="levels-list ">
 
             <div class="home-page"> 
                 <a   href="html/1.html">level 1</a>
@@ -86,4 +113,8 @@
 
     
 </body>
+
+
 </html>
+
+
