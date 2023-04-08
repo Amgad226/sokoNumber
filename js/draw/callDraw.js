@@ -1,4 +1,9 @@
 var boolean= true ; 
+function clearScreen() {
+  ctx.fillStyle = "#b7aea5";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fill();
+}
 
 function drawGame() {
     if(boolean){

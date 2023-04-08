@@ -1,3 +1,4 @@
+
 function drawGamee(path) {
   setTimeout(() => {
     var loader = document.getElementById("algo-next");
@@ -11,7 +12,6 @@ function drawGamee(path) {
       setTimeout(function() {
         clearScreen();
         drowTT(currentPath);
-        console.log(1);
       }, i * 300);
     }
 }

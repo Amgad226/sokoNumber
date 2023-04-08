@@ -1,18 +1,8 @@
 
     var tt  = [];
-    function log(params) {
-      console.log(params) 
-    }
-    
-    document.body.addEventListener("keyup", userplay);
-    document.body.addEventListener("keyup", function(event){
-      if(event.keyCode == 39 ||event.keyCode == 37||event.keyCode == 40||event.keyCode == 38){
-        var lastStep=_.cloneDeep(tt);
-        allSteps.push(lastStep)
-      }
-    });
 
     //                 x:  y:        color:     in:    out    v: mo: sleep obj
+    var win_hashed_array_in_user_play=0
     
     
     const I1=new ball( 100 , 100    ,oneColor     ,true,  false  ,1,'yes');
@@ -39,12 +29,11 @@
     
     var inputs  = [I1,I2 ,I3,I4,I5] ; 
     var outputs  = [O1,O2,O3,O4,O5] ; 
-var walls=[W1,W2];
+    var walls=[W1,W2];
     winArray=[O1,O2,O3,O4,O5];
     
     var stop=0
-    // log(winnn)
-ArrayTostoreNextState=[]; //to add  nextState array 
+    ArrayTostoreNextState=[]; //to add  nextState array 
     
    var  tt=[ 
       [ null   ,null   ,O2    ,W2    ],

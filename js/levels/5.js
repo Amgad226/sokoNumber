@@ -1,18 +1,6 @@
 
     var tt  = [];
-    function log(params) {
-      console.log(params) 
-    }
-    
-    document.body.addEventListener("keyup", userplay);
-
-    document.body.addEventListener("keyup", function(event){
-      if(event.keyCode == 39 ||event.keyCode == 37||event.keyCode == 40||event.keyCode == 38){
-        var lastStep=_.cloneDeep(tt);
-        allSteps.push(lastStep)
-      }
-    });
-    
+ 
     const I1=new ball( 100 ,100    ,oneColor    ,true,  false  ,1,'yes');
     const O1=new outt( 100,200     ,oneColor   ,false ,true   ,1,'no');
 
@@ -26,8 +14,8 @@
     const O4=new outt( 400,300   ,fourColor   ,false ,true   ,4,'no');
     // const O1=new ball( 100,200  ,"#0090FF"  ,false ,true   ,1,'no');
 
-const inputs =[ I1, I2, I3 ,I4 ,]
-const outputs =[ O1, O2, O3 ,O4 ,]
+    const inputs =[ I1, I2, I3 ,I4 ,]
+    const outputs =[ O1, O2, O3 ,O4 ,]
     
     const w1= new Wall (0  ,0,'#222',false,    'wall', '','no')
     const w2= new Wall (100 ,0,'#222',false,  'wall', '','no')
@@ -81,6 +69,7 @@ const outputs =[ O1, O2, O3 ,O4 ,]
       // [ w17   ,w16     ,w15   ,w14     ,w13    ,w10  ],
     ] ;
     ttStructure=new structure(tt ,null)
+    var win_hashed_array_in_user_play=750537147
 
 
     // const I1w=new ball( 100 ,100    ,oneColor    ,true,  false  ,1,'yes',0,null);
@@ -112,59 +101,9 @@ const outputs =[ O1, O2, O3 ,O4 ,]
     allSteps=[]
     allSteps.push(_.cloneDeep(tt))
   // get_next_state(tt)
-get_next_state(ttStructure)
+
     
 
-    function drawGame() {
-      
-      clearScreen();
-      requestAnimationFrame(drawGame);
-      drowTT();
-      O4.draw();
-      O3.draw();
-      O2.draw();
-      O1.draw();
- 
-
-      I1.draw();
-      I2.draw();
-      I3.draw();
-      I4.draw();
-      
-   
-      w1.draw();
-      w2.draw();
-      w3.draw();
-      w4.draw();
-      w5.draw();
-      w6.draw();
-      w7.draw();
-      w8.draw();
-      w9.draw();
-      w10.draw();
-      w11.draw();
-      w13.draw();
-      w14.draw();
-      w15.draw();
-      w16.draw();
-      w17.draw();
-      w19.draw();
-      w20.draw();
-      w21.draw();
-      w22.draw();
-      w23.draw();
-      w24.draw();
-      w25.draw();
-      w26.draw();
-      w24.draw();
-     
-    
-        
-    
-    
-    }    
-    
-    
     
     // drawGame();
     // const w1= new ball (0,0,'#222',false,    'wall', 'W1 ','no')

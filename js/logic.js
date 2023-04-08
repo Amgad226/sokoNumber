@@ -1,28 +1,16 @@
+var endGame = false
 
+function userplay(event) {
 
-var u = false;
-var d = false;
-var r = false;
-var l = false;
-var wine = false
-function userplay(event, a) {
-  //up     
-  // var array = _.cloneDeep(tt)
   var array = tt
-  // console.log('+')
 
-  if (wine == true) {
-    console.log('end')
+  if (endGame == true) {
+    // console.log('end')
     return;
   }
-  //   if(checkWin()){
-  //  if(isEqualArray(tt, ttWin)==0){
-  //     $('#win').css('display','block')
-  //     console.log('dn dn dn dn dn dn we have winnerrrrrrrrrrrrr')
-  //     wine=true
-  //     }
 
-  if (event.keyCode == 38 || u == true) {
+
+  if (event.keyCode == 38 ) {
 
     for (let X = array.length - 1; X >= 0; X--) {
       for (let Y = array[X].length - 1; Y >= 0; Y--) {
@@ -31,31 +19,28 @@ function userplay(event, a) {
           array[X][Y].winColor()
 
           array[X][Y].move_column(array, 'tt', X, Y, -1);
-
+          if (array[X][Y] == null || array[X][Y].value == 'W' || array[X][Y].inBox != true) {
+            continue;
+          }
+          array[X][Y].sleep = 1
         }
       }
     }
-    for (let X = 0; X < array.length; X++) {
-      for (let Y = 0; Y < array[X].length; Y++) {
+    // for (let X = 0; X < array.length; X++) {
+    //   for (let Y = 0; Y < array[X].length; Y++) {
 
 
-        if (array[X][Y] == null || array[X][Y].value == 'W' || array[X][Y].inBox != true) {
-          continue;
-        }
-        array[X][Y].sleep = 1
+    //     if (array[X][Y] == null || array[X][Y].value == 'W' || array[X][Y].inBox != true) {
+    //       continue;
+    //     }
+    //     array[X][Y].sleep = 1
 
-      }
-    }
-    if (u) {
-      u = false;
-      return array;
-    }
-
-
+    //   }
+    // }
   }
 
   //down
-  if (event.keyCode == 40 || d == true) {
+  if (event.keyCode == 40) {
 
     for (let X = 0; X < array.length; X++) {
       for (let Y = 0; Y < array[X].length; Y++) {
@@ -64,27 +49,27 @@ function userplay(event, a) {
           array[X][Y].winColor()
           array[X][Y].move_column(array, 'tt', X, Y, +1);
         }
-      }
-    }
-
-    for (let X = 0; X < array.length; X++) {
-      for (let Y = 0; Y < array[X].length; Y++) {
         if (array[X][Y] == null || array[X][Y].value == 'W' || array[X][Y].inBox != true) {
           continue;
         }
         array[X][Y].sleep = 1
-
       }
     }
-    // console.log(d,222);
-    if (d == true) {
-      d = false;
-      return array;
-    }
+
+  //   for (let X = 0; X < array.length; X++) {
+  //     for (let Y = 0; Y < array[X].length; Y++) {
+  //       if (array[X][Y] == null || array[X][Y].value == 'W' || array[X][Y].inBox != true) {
+  //         continue;
+  //       }
+  //       array[X][Y].sleep = 1
+
+  //     }
+  //   }
+
   }
 
   //left
-  if (event.keyCode == 37 || l == true) {
+  if (event.keyCode == 37 ) {
     for (let X = array.length - 1; X >= 0; X--) {
       for (let Y = array[X].length - 1; Y >= 0; Y--) {
 
@@ -93,33 +78,32 @@ function userplay(event, a) {
 
           array[X][Y].move_row(array, 'tt', X, Y, -1)
         }
-
-      }
-
-    }
-
-    for (let X = 0; X < array.length; X++) {
-      for (let Y = 0; Y < array[X].length; Y++) {
-
-
         if (array[X][Y] == null || array[X][Y].value == 'W' || array[X][Y].inBox != true) {
-          // console.log('ignore :');
           continue;
         }
         array[X][Y].sleep = 1
 
       }
+
     }
 
-    if (l == true) {
-      l = false;
-      var copy = _.cloneDeep(array)
-      return copy;
-    }
+    // for (let X = 0; X < array.length; X++) {
+    //   for (let Y = 0; Y < array[X].length; Y++) {
+
+
+    //     if (array[X][Y] == null || array[X][Y].value == 'W' || array[X][Y].inBox != true) {
+    //       // console.log('ignore :');
+    //       continue;
+    //     }
+    //     array[X][Y].sleep = 1
+
+    //   }
+    // }
+
   }
 
   //right
-  if (event.keyCode == 39 || r == true) {
+  if (event.keyCode == 39) {
 
     for (let X = 0; X < array.length; X++) {
       for (let Y = 0; Y < array[X].length; Y++) {
@@ -128,117 +112,107 @@ function userplay(event, a) {
           array[X][Y].winColor()
           array[X][Y].move_row(array, 'tt', X, Y, +1)
         }
-      }
-    }
-
-    for (let X = 0; X < array.length; X++) {
-      for (let Y = 0; Y < array[X].length; Y++) {
         if (array[X][Y] == null || array[X][Y].value == 'W' || array[X][Y].inBox != true) {
           continue;
         }
         array[X][Y].sleep = 1
       }
     }
-    if (r) {
-      r = false;
-      var copy = _.cloneDeep(array)
-      return copy;
-    }
+
+    // for (let X = 0; X < array.length; X++) {
+    //   for (let Y = 0; Y < array[X].length; Y++) {
+    //     if (array[X][Y] == null || array[X][Y].value == 'W' || array[X][Y].inBox != true) {
+    //       continue;
+    //     }
+    //     array[X][Y].sleep = 1
+    //   }
+    // }
+
   }
-  // console.log(checkWin());
-  if (checkWin()) {
+    if (checkWin()) {
 
     $('#win').css('display', 'block')
     console.log('dn dn dn dn dn dn we have winnerrrrrrrrrrrrr')
-    wine = true
+    endGame = true
   }
-
-  //call get_next_state
-  // if(event.keyCode == 39 ||event.keyCode == 37||event.keyCode == 40||event.keyCode == 38)
-  // {
-  //    get_next_state(array);
-  // }
 }
 
 function checkWin() {
-  var win = 0
+  if(win_hashed_array_in_user_play!=0){
+    // console.log('checkWin with hashed number');
+    var hashedTT ;hashedTT = hashArray(tt);
+    if(hashedTT===win_hashed_array_in_user_play){
+      return true 
+    }
+    return false 
+  }
+  else{
 
+  var win = 0
+  
   for (let i = 0; i < winArray.length; i++) {
     if (winArray[i].number_inside != null) {
       if (winArray[i].value == winArray[i].number_inside.value)
-        win++;
+      win++;
     }
   }
-
+  
   if (win == winArray.length) {
     return true;
   }
   else
-    return false
-
+  return false
+  
 
 }
-
-function winner(arr1 = tt, arr2 = ttWin) {
-  if (isEqualArray(arr1, arr2) == 0) {
-    return true;
-  }
-  else
-    return false;
-
 }
 
 function get_next_state(structureArrayy) {
+// return
   var ArrayToStoreStructureNextState = [];
   var dir = [];
   var structureArray = _.cloneDeep(structureArrayy)
   var structureNextState = _.cloneDeep(structureArray)
-  // console.log( nextState, 'thisdjsadiohaoifhaeofoieh');
 
-  //up
-  // console.log(structureNextState);
+  // var hashedStructureArray ;
+  // hashedStructureArray = hashArray(structureArray.array);//static
+
+  // var hashedStructureNextState ;
+  // hashedStructureNextState = hashArray(structureNextState.array);
+
+  // console.log(structureArray.array,structureNextState.array);
+  // console.log(hashedStructureNextState,hashedStructureArray);
+
+
+  //عم مشيي خطوة لفوق مشان افحص ازا اختلفت معناها فيها تتحرك
   for (let X = structureNextState.array.length - 1; X >= 0; X--) {
     for (let Y = structureNextState.array[X].length - 1; Y >= 0; Y--) {
       if (structureNextState.array[X][Y] != null) {
 
         structureNextState.array[X][Y].move_column(structureNextState.array, 'structureNextState.array', X, Y, -1)
-
       }
-    }
-  }
 
-  for (let X = 0; X < structureNextState.array.length; X++) {
-    for (let Y = 0; Y < structureNextState.array[X].length; Y++) {
+    //عم اعمل سليب للكل مشان ما يصي خربطة 
       if (structureNextState.array[X][Y] == null || structureNextState.array[X][Y].value == 'W' || structureNextState.array[X][Y].inBox != true) {
-        // continue;
+        continue;
       }
       else {
         structureNextState.array[X][Y].sleep = 1
+      }
 
-      }
-      if (structureNextState.array[X][Y] == null || structureNextState.array[X][Y].value == 'W' || structureNextState.array[X][Y].inBox != true) {
-        // continue;
-      }
-      else {
-
-        structureNextState.array[X][Y].sleep = 1
-      }
 
     }
   }
-  // 
-  // return;
-  // console.log(structureNextState.array,array);
-  if (isEqualArray(structureNextState.array, structureArray.array) != 0) {
-    // console.log(structureNextState);
-    // alert(21)
+
+ 
+  // هون عم افحص الرقعة يلي جاييتني مع يلي مشيتها ازا مو متساويين معناها ما فيها تتحرك 
+
+
+    if (isEqualArray(structureNextState.array, structureArray.array) != 0) {
     dir.push('Up')
     ArrayToStoreStructureNextState.push(structureNextState)
   }
   structureNextState = _.cloneDeep(structureArray)
-  // structureNextState=array
-
-
 
   //down
   for (let X = 0; X < structureNextState.array.length; X++) {
@@ -246,31 +220,16 @@ function get_next_state(structureArrayy) {
       if (structureNextState.array[X][Y] != null) {
         structureNextState.array[X][Y].move_column(structureNextState.array, 'structureNextState.array', X, Y, +1)
       }
-    }
-  }
-  for (let X = 0; X < structureNextState.array.length; X++) {
-    for (let Y = 0; Y < structureNextState.array[X].length; Y++) {
       if (structureNextState.array[X][Y] == null || structureNextState.array[X][Y].value == 'W' || structureNextState.array[X][Y].inBox != true) {
-        // continue;
+        continue;
       }
       else {
         structureNextState.array[X][Y].sleep = 1
-
       }
-      if (structureNextState.array[X][Y] == null || structureNextState.array[X][Y].value == 'W' || structureNextState.array[X][Y].inBox != true) {
-        // continue;
-      }
-      else {
-
-        structureNextState.array[X][Y].sleep = 1
-      }
-
-
-
     }
   }
-  // console.log( 'equal is  ',isEqualArray(structureNextState.array,array) );
 
+  
   if (isEqualArray(structureNextState.array, structureArray.array) != 0) {
     dir.push('Down')
 
@@ -280,41 +239,23 @@ function get_next_state(structureArrayy) {
   structureNextState = _.cloneDeep(structureArray)
   // structureNextState=array
 
-
-
-
-
-
   //right
-  // console.log(structureNextState.array, 'array to cheack ');
   for (let X = 0; X < structureNextState.array.length; X++) {
     for (let Y = 0; Y < structureNextState.array[X].length; Y++) {
-      // console.log(4); 
       if (structureNextState.array[X][Y] != null) {
-        // console.log(structureNextState.array[X][Y],X,Y);
         structureNextState.array[X][Y].move_row(structureNextState.array, 'structureNextState.array', X, Y, +1)
       }
-    }
-  }
-  for (let X = 0; X < structureNextState.array.length; X++) {
-    for (let Y = 0; Y < structureNextState.array[X].length; Y++) {
+
+
       if (structureNextState.array[X][Y] == null || structureNextState.array[X][Y].value == 'W' || structureNextState.array[X][Y].inBox != true) {
-        // continue;
+        continue;
       }
       else {
         structureNextState.array[X][Y].sleep = 1
-
       }
-      if (structureNextState.array[X][Y] == null || structureNextState.array[X][Y].value == 'W' || structureNextState.array[X][Y].inBox != true) {
-        // continue;
-      }
-      else {
-
-        structureNextState.array[X][Y].sleep = 1
-      }
-
     }
   }
+
 
   if (isEqualArray(structureNextState.array, structureArray.array) != 0) {
     dir.push('Right')
@@ -322,37 +263,24 @@ function get_next_state(structureArrayy) {
     ArrayToStoreStructureNextState.push(structureNextState)
   }
   structureNextState = _.cloneDeep(structureArray)
-  // structureNextState=array
 
 
   //left
   for (let X = structureNextState.array.length - 1; X >= 0; X--) {
     for (let Y = structureNextState.array[X].length - 1; Y >= 0; Y--) {
       if (structureNextState.array[X][Y] != null) {
-
         structureNextState.array[X][Y].move_row(structureNextState.array, 'structureNextState.array', X, Y, -1)
       }
-    }
-  }
-  for (let X = 0; X < structureNextState.array.length; X++) {
-    for (let Y = 0; Y < structureNextState.array[X].length; Y++) {
+
       if (structureNextState.array[X][Y] == null || structureNextState.array[X][Y].value == 'W' || structureNextState.array[X][Y].inBox != true) {
-        // continue;
+        continue;
       }
       else {
         structureNextState.array[X][Y].sleep = 1
-
       }
-      if (structureNextState.array[X][Y] == null || structureNextState.array[X][Y].value == 'W' || structureNextState.array[X][Y].inBox != true) {
-        // continue;
-      }
-      else {
-
-        structureNextState.array[X][Y].sleep = 1
-      }
-
     }
   }
+
   if (isEqualArray(structureNextState.array, structureArray.array) != 0) {
     dir.push('Left')
 
@@ -362,11 +290,9 @@ function get_next_state(structureArrayy) {
   // structureNextState=array
 
   return [ArrayToStoreStructureNextState, dir];
-  // return dir
-  // return ArrayToStoreStructureNextState
+
 
 }
-
 function isEqualArray(ary1, ary2) {
   // alert(1)
   // console.log(ary1);
@@ -429,146 +355,118 @@ function isEqualArray(ary1, ary2) {
   return a
 }
 
-var stackWin = []
-var stack = [];
-var counter = 0;
-var visited = [];
-var path
 function hideLoader(){
   var loader = document.getElementById("loader");
   loader.style.display = "none";
 }
+
 function displayLoader(){
   var loader = document.getElementById("loader");
   loader.style.display = "block";
   
 }
 
-function DFS(Structurearray = ttStructure, dir = '') {
-
-
-
-  var StructureCopy = _.cloneDeep(Structurearray);
-  // console.log(Struct ureCopy.array);
-  // StructureCopy.perant = perants
-
-  if (stack.length == 0) {
-    stack.push(StructureCopy);
-    visited.push(StructureCopy);
-    // stackWin.push(array);
+function hashArray(array){
+  var string=JSON.stringify(array)
+  var hash = 0;
+  for (var i = 0; i < string.length; i++) {
+      var code = string.charCodeAt(i);
+      hash = ((hash<<5)-hash)+code;
+      hash = hash & hash; // Convert to 32bit integer
   }
+  return hash;
+}
+var queue = new Queue()
+var pQueue = new PriorityQueue()
+var visited = [];
+var stack = [];
+var visited = [];
+var hashedArray ;
+var isVisited;
+var path
+
+function DFS(Structure ) {
+  
+  hashedArray = hashArray(Structure.array);
+
+  if (stack.length == 0) 
+  stack.push(hashedArray);
+  
+
   else {
-    for (let i = 0; i < stack.length; i++) {
-      if (isEqualArray(StructureCopy.array, stack[i].array) == 0) {
+    for (let i = 0; i < stack.length; i++){
+        if ((hashedArray=== stack[i]) ) 
         return false;
-      }
     }
-
-    counter++;
-    stack.push(StructureCopy);
-    visited.push(StructureCopy);
+    stack.push(hashedArray);
   }
 
-
-  if (isEqualArray(StructureCopy.array, ttWin) == 0) {
+  if ((hashedArray=== hashedTTWin) ) {
     hideLoader()
-    for (let i = 0; i < stack.length; i++) {
-      stackWin.push(stack[i])
-    }
-     path = [tt, ...StructureCopy.perant,ttWin]
-
-    console.log(path, 'path is');
+    path = [ ...Structure.perant,ttWin]
+    // console.log(path, 'path is');
     console.log(path.length, 'path');
-    console.log(stackWin.length, 'visitied');
+    console.log(stack.length, 'visitied');
     console.log('win');
-    document.getElementById('path').innerHTML=`path length is ${path.length} `
-
+    document.getElementById('path').innerHTML=`path: ${path.length} `
+    document.getElementById('visited').innerHTML=`visited: ${stack.length} `
     drawGamee(path);
-
     return true
   }
 
   else {
-    // console.log(counter);
-    var result = get_next_state(StructureCopy);
+    var sons = get_next_state(Structure);
 
-    var copyResualt = _.cloneDeep(result);
-    // console.log(copyResualt[1],'get next state ');
+    for (let i = 0; i < sons[0].length; i++) {
 
-    for (let i = 0; i < copyResualt[0].length; i++) {
+      sons[0][i].perant = (Structure.perant?.length > 0 ? [...Structure.perant, Structure.array] : [Structure.array])
 
-
-      copyResualt[0][i].perant = (StructureCopy.perant?.length > 0 ? [...StructureCopy.perant, StructureCopy.array] : [StructureCopy.array])
-
-      var dfs = DFS(copyResualt[0][i], copyResualt[1][i]);
-
-
-      if (dfs == true) {
-        return true;
-      }
+      if ( DFS(sons[0][i], sons[1][i])) 
+      return true;
     }
 
-    //  DFS(tt,'')
-    // console.log('----------- END DFS -----------');
     return false;
-
   }
-  stack.pop();
-  return true;
-
 }
 
-var counter = 0;
-var queue = new Queue()
-var bfsCounter = 0;
-var visited = [];
-function BFS(structureArrayy) {
+function BFS(Structure) {
+ 
+   isVisited = false
 
-  var isVi = 0
-  var structureArray = _.cloneDeep(structureArrayy);
+  hashedArray = hashArray(Structure.array);
 
-  var hashedArray ;hashedArray = hashArray(structureArray.array);
   for (let i = 0; i < visited.length; i++) {
     if (hashedArray==visited[i]) {
-      isVi++;
+      isVisited=true
       break;
-    }    
+    }
   }
-  if (isVi == 0) {
+  if (!isVisited) {
     visited.push(hashedArray)
   }
-
-  visited.push(structureArray.array)
-
-  if (isEqualArray(structureArray.array, ttWin) == 0) {
+  
+  if (hashedTTWin==hashedArray) {
     hideLoader()
-    var path = [...structureArray.perant, structureArray.array,ttWin]
+    var path = [...Structure.perant, ttWin]
     // console.log(path,'path is');
     console.log(path, 'path is');
     console.log(path.length, 'path');
-    console.log(bfsCounter, 'visitied');
-
-    // alert('winner ')
+    console.log(visited.length, 'visitied');
     console.log('win');
     document.getElementById('path').innerHTML=`path length is ${path.length} `
+    document.getElementById('visited').innerHTML=`visited: ${visited.length} `
 
     drawGamee(path);
 
     return true
   }
-  // visited.push(structureArray.array)
-  var sons = get_next_state(structureArray);
+  // visited.push(Structure.array)
+  var sons = get_next_state(Structure);
   for (let i = 0; i < sons[0].length; i++) {
 
 
-    sons[0][i].perant = (structureArray.perant?.length > 0 ? [...structureArray.perant, structureArray.array] : [structureArray.array])
-    // for (let j = 0; j < visited.length; j++) {
-    //   var c = 0
-    //   if (isEqualArray(sons[0][i].array, visited[j]) == 0) {
-    //     c++;
-    //     break;
-    //   }
-    // }
+    sons[0][i].perant = (Structure.perant?.length > 0 ? [...Structure.perant, Structure.array] : [Structure.array])
+  
     var hashedSon;hashedSon = hashArray(sons[0][i].array);
     for (let i = 0; i < visited.length; i++) {
         var c = 0
@@ -581,78 +479,49 @@ function BFS(structureArrayy) {
     if (c == 0) {
       queue.enqueue(sons[0][i])
     }
-
-
-
   }
   if (!queue.isEmpty()) {
     BFS(queue.dequeue());
-
   }
 
 }
 
-var pQueue = new PriorityQueue()
-// var hashedArray = objectHash.sha1('1');
+function UCS(Structure) {
 
-// visited.push(hashedArray)
-function a (){
+   isVisited = false
 
-  if (isEqualArray(tt, ttWin) == 0) {
-    // if (hashedTTWin==hashedTT) {
-return true 
-    }
-    return false 
-}
-var s = 0
-function hashArray(array){
-  var string=JSON.stringify(array)
-  var hash = 0;
-  for (var i = 0; i < string.length; i++) {
-      var code = string.charCodeAt(i);
-      hash = ((hash<<5)-hash)+code;
-      hash = hash & hash; // Convert to 32bit integer
-  }
-  return hash;
-}
-
-function UCS(structureArrayy) {
-
-  var structureArray = _.cloneDeep(structureArrayy);
-  var isVi = 0
-
-  var hashedArray ;hashedArray = hashArray(structureArray.element.array);
+  var hashedArray ;hashedArray = hashArray(Structure.element.array);
   for (let i = 0; i < visited.length; i++) {
     if (hashedArray==visited[i]) {
-      isVi++;
+      isVisited=true;
       break;
     }    
   }
-  if (isVi == 0) {
+  if (!isVisited ) {
     visited.push(hashedArray)
   }
 
-  // if (isEqualArray(structureArray.element.array, ttWin) == 0) {
     if (hashedTTWin==hashedArray) {
       hideLoader()
-    var path = [...structureArray.element.perant, structureArray.element.array,]
-    console.log(path, 'path is');
+    var path = [...Structure.element.perant, Structure.element.array,]
+    // console.log(path, 'path is');
     console.log(path.length, 'path');
-    console.log(visited.length, 'visitied');
-    console.log(visited, 'visitied node ');
-    console.log(structureArray.element.cost, 'cost');
+    console.log(visited.length, 'visited');
+    // console.log(visited, 'visitied node ');
+    console.log(Structure.element.cost, 'cost');
     console.log('win');
     document.getElementById('path').innerHTML=`path length is ${path.length} `
+    document.getElementById('visited').innerHTML=`visited: ${visited.length} `
 
     drawGamee(path);
 
     return true
   }
 
-  var sons = get_next_state(structureArray.element);
+  var sons = get_next_state(Structure.element);
   for (let i = 0; i < sons[0].length; i++) {
-    sons[0][i].perant = (structureArray.element.perant?.length > 0 ? [...structureArray.element.perant, structureArray.element.array] : [structureArray.element.array])
-    sons[0][i].cost = structureArray.element.cost + 1;
+    sons[0][i].perant = (Structure.element.perant?.length > 0 ? [...Structure.element.perant, Structure.element.array] : [Structure.element.array])
+    sons[0][i].cost = Structure.element.cost + 1;
 
   var hashedSon;hashedSon = hashArray(sons[0][i].array);
   for (let i = 0; i < visited.length; i++) {
@@ -662,81 +531,56 @@ function UCS(structureArrayy) {
           break;
     }    
   }
-
     if (c == 0) {
       pQueue.enqueue(sons[0][i], sons[0][i].cost)
     }
-
   }
-
   if (!pQueue.isEmpty()) {
     UCS(pQueue.dequeue());
   }
 
 }
 
-function aStar(structureArrayy) {
+function aStar(Structure) {
+
+  isVisited=false
+  hashedArray = hashArray(Structure.element.array);
+  for (let i = 0; i < visited.length; i++) {
+    if (hashedArray==visited[i]) {
+      isVisited=true;
+      break;
+    }    
+  }
+  if (!isVisited) {
+    visited.push(hashedArray)
+  }
 
 
-  var structureArray = _.cloneDeep(structureArrayy);
-  var isVi = 0
-
-
-
-
-  if (isEqualArray(structureArray.element.array, ttWin) == 0) {
+  if (hashedTTWin==hashedArray) {
     hideLoader()
-    visited.push(structureArray.element.array)
-    var path = [...structureArray.element.perant, structureArray.element.array,]
-    console.log('path is ',path );
+    visited.push(Structure.element.array)
+    var path = [...Structure.element.perant, Structure.element.array,]
+    // console.log('path is ',path );
     console.log(path.length, 'path');
-    var copyVisited = _.cloneDeep(visited)
-    console.log(copyVisited, 'visitied node ');
-    console.log(copyVisited.length, 'visitied');
-    console.log(structureArray.element.cost, 'cost');
+    // console.log(copyVisited, 'visited node ');
+    console.log(visited.length, 'visited');
+    console.log(Structure.element.cost, 'cost');
     console.log('--------------------------------------------------');
     document.getElementById('path').innerHTML=`path length is ${path.length} `
+    document.getElementById('visited').innerHTML=`visited: ${visited.length} `
     
     drawGamee(path);
 
     return true
-    visited.pop()
   }
- 
 
-  // visited.push(structureArray.array)
-  var sons = get_next_state(structureArray.element);
-  // for (let j = 0; j < visited.length; j++) {
-    // if (isEqualArray(structureArray.element.array, visited[j]) == 0) {
-      // isVi++;
-      // break;
-    // }
-  // }
-  // if (isVi == 0) {
-    // visited.push(structureArray.element.array)
-  // }
-  var hashedArray ;hashedArray = hashArray(structureArray.element.array);
-  for (let i = 0; i < visited.length; i++) {
-    if (hashedArray==visited[i]) {
-      isVi++;
-      break;
-    }    
-  }
-  if (isVi == 0) {
-    visited.push(hashedArray)
-  }
+  var sons = get_next_state(Structure.element);
 
   for (let i = 0; i < sons[0].length; i++) {
-    sons[0][i].perant = (structureArray.element.perant?.length > 0 ? [...structureArray.element.perant, structureArray.element.array] : [structureArray.element.array])
-    sons[0][i].cost = structureArray.element.cost + 1;
+    sons[0][i].perant = (Structure.element.perant?.length > 0 ? [...Structure.element.perant, Structure.element.array] : [Structure.element.array])
+    sons[0][i].cost = Structure.element.cost + 1;
     sons[0][i].h = heuristic(sons[0][i].array, ttWin);
-      // for (let j = 0; j < visited.length; j++) {
-        // var c = 0
-        // if (isEqualArray(sons[0][i].array, visited[j]) == 0) {
-          // c++;
-          // break;
-        // }
-      // }
+ 
       var hashedSon;hashedSon = hashArray(sons[0][i].array);
       for (let i = 0; i < visited.length; i++) {
         var c = 0
@@ -749,19 +593,6 @@ function aStar(structureArrayy) {
       pQueue.enqueueStar(sons[0][i], sons[0][i].cost + sons[0][i].h, sons[0][i].h)
     }
 
-  }
-
-  if (pQueue.isEmpty()) {
-    var path = [...structureArray.element.perant, structureArray.element.array]
-
-    console.log('path is ',path );
-    console.log(path.length, 'path');
-    // console.log(visited, 'visitied node ');
-    console.log(visited.length, 'visitied');
-    console.log(structureArray.element.cost, 'cost');
-    console.log('win');
-
-    return true
   }
   
   if (!pQueue.isEmpty()) {
@@ -809,7 +640,76 @@ function heuristic(array, array2 ) {
   return [input1.items, input2.items]
 }
 
-function drowDFS() {
 
-  console.log(stackWin);
+
+function  callDfs(){
+  setTimeout(() => {  
+          const startTime = new Date().getTime();
+
+          DFS(ttStructure)    
+
+          const endTime = new Date().getTime();
+
+          const seconds = (endTime - startTime) / 1000;
+          document.getElementById('timer').innerHTML=`timer: ${seconds} s`
+
+          console.log(`Function executed in ${seconds} seconds`);
+          
+          }, 100);
+          displayLoader();
+
 }
+
+function  callBfs(){
+  setTimeout(() => {  
+          const startTime = new Date().getTime();
+
+          BFS(ttStructure)    
+
+          const endTime = new Date().getTime();
+
+          const seconds = (endTime - startTime) / 1000;
+          document.getElementById('timer').innerHTML=`timer: ${seconds} s`
+
+          console.log(`Function executed in ${seconds} seconds`);
+          
+          }, 100);
+          displayLoader();
+
+}
+
+function callUCS()
+{
+  
+  setTimeout(() => {
+      const startTime = new Date().getTime();
+      UCS({element:ttStructure,priority:0})  
+      
+      const endTime = new Date().getTime();
+          const seconds = (endTime - startTime) / 1000;
+          document.getElementById('timer').innerHTML=`timer: ${seconds} s`
+
+          console.log(`Function executed in ${seconds} seconds`);
+          
+          }, 100);
+          displayLoader();
+  
+}
+
+function callAstar()
+{
+  
+  setTimeout(() => {  
+      const startTime = new Date().getTime();
+       aStar({element:ttStructure,priority:0})  
+       const endTime = new Date().getTime();
+
+          const seconds = (endTime - startTime) / 1000;
+          document.getElementById('timer').innerHTML=`timer: ${seconds} s`
+
+          console.log(`Function executed in ${seconds} seconds`);
+          
+          }, 100);
+          displayLoader();
+}   
+  

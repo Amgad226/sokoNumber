@@ -34,17 +34,22 @@
   
         <div class="list-algo rotate"  >
             <div class="solve" >  Solve With Algorithms</div>
-                <button class="print algo" onclick="{setTimeout(() => {    DFS(ttStructure)    }, 100);displayLoader();}">DFS</button>
-                <button class="print algo" onclick="{setTimeout(() => {   BFS(ttStructure)     }, 100);displayLoader();}">BFS</button>
-                <button class="print algo" onclick="{setTimeout(() => {   UCS  ({element:ttStructure,priority:0})     }, 100);displayLoader();}">UCS</button>
-                <button class="print algo" onclick="{setTimeout(() => {   aStar({element:ttStructure,priority:0})   }, 100);displayLoader();}">A*</button>
+            <button class="print algo" onclick=" callDfs() ">DFS</button>
+            <button class="print algo" onclick="callBfs()">BFS</button>
+            <button class="print algo" onclick="callUCS()">UCS</button>
+            <button class="print algo" onclick="callAstar()">A*</button>
             </div>
         </div>
 
         <canvas id="gameArea" width="300" height="500"></canvas>
 
-  
-      <div id="path"> </div>
+      <div class="info">
+        <div id="path"> </div>
+        <div id="visited"> </div>
+        <div id="timer"> </div>
+
+      </div>
+        
  
 
 

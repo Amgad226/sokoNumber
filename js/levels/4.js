@@ -1,13 +1,5 @@
     var tt  = [];
 
-    document.body.addEventListener("keyup", userplay);
-    document.body.addEventListener("keyup", function(event){
-      if(event.keyCode == 39 ||event.keyCode == 37||event.keyCode == 40||event.keyCode == 38){
-        var lastStep=_.cloneDeep(tt);
-        allSteps.push(lastStep)
-      }
-    });
-    
     const I1=new ball( 0,  0+100    ,oneColor     ,true,  false  ,1,'yes');
     const O1=new outt( 400,100+100  ,oneColor  ,false ,true   ,1,'no');
 
@@ -49,6 +41,7 @@
       ,W1,W2,W3,W4,W5,W6
 
     ];
+  var win_hashed_array_in_user_play=-380873465
     
 
     // const I1w=new ball( 0,  0+100    ,oneColor    ,true   ,false  ,1  ,'yes'  ,0   ,null);
@@ -76,36 +69,7 @@
   
     allSteps=[]
     allSteps.push(_.cloneDeep(tt))
-get_next_state(ttStructure)
-// get_next_state(tt)
     
  
 
-    function drawGame() {
-      
-      clearScreen();
-      requestAnimationFrame(drawGame);    
-       
-      O3.draw();
-      O2.draw();
-      O1.draw();
-
-      W1.draw();
-      W2.draw();
-      W3.draw();
-      W4.draw();
-      W5.draw();
-      W6.draw();
-      
-      I1.draw();
-      I2.draw();
-      I3.draw();
     
-      w1.draw();
-      w2.draw();
-      w3.draw();
-      w4.draw();
-      w5.draw();
-    }    
-
-    drawGame();    

@@ -1,13 +1,5 @@
+console.log(oneColor);
 var tt  = [];
-
-
-document.body.addEventListener("keyup", userplay);
-document.body.addEventListener("keyup", function(event){
-  if(event.keyCode == 39 ||event.keyCode == 37||event.keyCode == 40||event.keyCode == 38){
-    var lastStep=_.cloneDeep(tt);
-    allSteps.push(lastStep)
-  }
-});
 
 const w1= new Wall (0   ,0,'#222',false,    'wall', '','no')
 const w2= new Wall (100 ,0,'#222',false,  'wall', '','no')
@@ -39,6 +31,7 @@ var winArray=[O1,O2];
 
 var stop=0
 var ArrayTostoreNextState=[]; //to add  nextState array 
+var win_hashed_array_in_user_play=-669423721
 
 tt=[ 
   // [ w1    ,w2   ,w3   ],
@@ -79,6 +72,5 @@ var array2 = [I1w,I2w]
 
 allSteps=[]
 allSteps.push(_.cloneDeep(tt))
-get_next_state(ttStructure)
 
 

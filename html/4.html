@@ -36,20 +36,23 @@
 
      <div class="list-algo rotate"  >
          <div class="solve" >  Solve With Algorithms</div>
-             <button class="print algo" onclick="{setTimeout(() => {    DFS(ttStructure)    }, 100);displayLoader();}">DFS</button>
-             <button class="print algo" onclick="{setTimeout(() => {   BFS(ttStructure)     }, 100);displayLoader();}">BFS</button>
-             <button class="print algo" onclick="{setTimeout(() => {   UCS  ({element:ttStructure,priority:0})     }, 100);displayLoader();}">UCS</button>
-             <button class="print algo" onclick="{setTimeout(() => {   aStar({element:ttStructure,priority:0})   }, 100);displayLoader();}">A*</button>
+             <button class="print algo" onclick=" callDfs() ">DFS</button>
+             <button class="print algo" onclick="callBfs()">BFS</button>
+             <button class="print algo" onclick="callUCS()">UCS</button>
+             <button class="print algo" onclick="callAstar()">A*</button>
          </div>
      </div>
 
      <canvas    class="big-canvas-4"  id="gameArea" width="500" height="400"></canvas>
-     <!-- style=" @media screen and (max-width: 798px) {transform: translate(-50%, -50%) scale(0.7);}" -->
-    <div id="path"> </div>
+
+     <div class="info">
+        <div id="path"> </div>
+        <div id="visited"> </div>
+        <div id="timer"> </div>
+
+      </div>
 
 
-
-<!-- <input type="checkbox" class="logMessage">  -->
 
     <script src="../js/lib/queue.js"></script>
     <script src="../js/lib/pQueue.js"></script>
@@ -63,6 +66,7 @@
     <script src="../js/controlle.js"></script>
 
 
+ 
 
 
 </body>

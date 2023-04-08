@@ -1,11 +1,6 @@
+// import { oneColor, twoColor, threeColor, fourColor, fiveColor, canvas} from "../js/static.js";
+  
   var tt  = [];
-  document.body.addEventListener("keyup", userplay);
-  document.body.addEventListener("keyup", function(event){
-    if(event.keyCode == 39 ||event.keyCode == 37||event.keyCode == 40||event.keyCode == 38){
-      var lastStep=_.cloneDeep(tt);
-      allSteps.push(lastStep)
-    }
-  });
 
   ArrayTostoreNextState=[]; //to add  nextState array 
   
@@ -22,7 +17,7 @@ var walls=[];
 
   ] 
   ttStructure=new structure(tt ,null)
-
+var win_hashed_array_in_user_play=716641295;
 
   const I1w=new ball( 300,  0    ,oneColor     ,true,  false  ,1,'yes',0,null);
 
